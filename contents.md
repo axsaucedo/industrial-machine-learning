@@ -138,9 +138,11 @@ ml.run_distributed_ml()
 [NEXT SECTION]
 # 1. Machine Learning
 
+The Crypto-ML Ltd. devs are trying to figure out what ML really is.
+
 [NEXT]
 
-### Supervised ML Overview
+### Supervised ML Everywhere
 
 [NEXT]
 Given some input data, predict the correct output
@@ -224,10 +226,34 @@ $-0.5 < 0$ means left side of the line.
 
 Input shape is a **triangle**.
 
-_note_
-Point out that this same technique can used to predicting continuous, numerical
-values too (like how much house prices will cost, or how much a stock's price
-will go up or down).
+[NEXT]
+### The Mighty Perceptron
+
+Synonymous to our linear function `f(x) = mx + c`
+<br>
+<br>
+
+### `f(wx + b) = y`
+
+![perceptron](images/perceptron.svg)
+
+[NEXT]
+### Single neuron &mdash; one output
+
+![rnn_diagram](images/rnn-perceptron.svg)
+
+[NEXT]
+### Neural network &mdash; multiple outputs
+
+![rnn_diagram](images/rnn-feedforward.svg)
+
+[NEXT]
+### Deep Networks &mdash; many hidden layers
+
+![deep_rnn_diagram](images/rnn-deepfeedforward.svg)
+
+
+
 
 [NEXT]
 ### The Hard Part
@@ -247,7 +273,15 @@ Keep adjusting the weights...
 
 
 [NEXT]
-### ML allows us to do complex things!
+### More complex ML
+
+By stacking more of these functions together, we can process more complex data!
+
+[NEXT]
+
+### Deep Neural Networks 
+Deep neural nets can learn and predict very complex patterns of data.
+
 
 
 [NEXT]
@@ -276,7 +310,7 @@ Processing sequential requires memory of what was seen previously.
 
 #### How do we do this?
 
-[NEXT SECTION]
+[NEXT]
 
 # Sequential Models
 
@@ -284,33 +318,21 @@ Processing sequential requires memory of what was seen previously.
 >
 > Support Vector Regression
 
-## Deep Neural Networks (LSTMs)
+## Recurrent Neural Networks (LSTMs)
 
 [NEXT]
-Deep neural nets can learn to patterns in complex data, like language, bitcoin prices, etc
+
+Sequential models often are used to predict future data.
+
+This can be time-sequence data, text characters, etc.
+
+[NEXT]
+
+### Deep Recurrent Neural Networks
+Sequential NN to predict complex patterns in sequential data such as language, bitcoin prices, etc
 
 We can encode memory into the algorithm.
 
-[NEXT]
-### The Mighty Perceptron
-
-Synonymous to our linear function `f(x) = mx + c`
-<br>
-<br>
-
-### `f(wx + b) = y`
-
-![perceptron](images/perceptron.svg)
-
-[NEXT]
-### Single neuron &mdash; one output
-
-![rnn_diagram](images/rnn-perceptron.svg)
-
-[NEXT]
-### Neural network &mdash; multiple outputs
-
-![rnn_diagram](images/rnn-feedforward.svg)
 
 [NEXT]
 ### Deep Networks &mdash; many hidden layers
@@ -371,129 +393,7 @@ Each prediction is a **time step**.
 ![rnn_unrolled_chars](images/rnn-unrolled-chars9.svg)
 
 [NEXT]
-### Problem: Long-Term Dependencies
-
-![rnn_long_term_deps](images/rnn-long-term-deps.svg)
-
-[NEXT]
-### Cell States
-
-Add **extra state** to each layer of the network.
-
-Remembers inputs **far into the past**.
-
-Transforms layer's original output into something that is **relevant** to
-the current context.
-
-_note_
-This extra state stores information on inputs from much earlier time steps.
-
-The state transforms the hidden layer's original output into something that is
-relevant to the current context, given what's happened in the past.
-
-[NEXT]
-![rnn_compressed](images/rnn-stateloopcompressed.svg)
-
-[NEXT]
-![rnn_hiddenstate](images/rnn-hiddenstate.svg)
-
-[NEXT]
-Hidden layer output _and_ cell state is feed into next time step.
-
-Gives network ability to handle long-term dependencies in sequences.
-
-_note_
-Feeding the output of a hidden layer _and_ its internal cell state back into
-itself at the next time step allows the network to express long-term
-dependencies in sequences.
-
-For example, the network will be able to remember the subject at the start of
-a paragraph of text at the very end of the paragraph, allowing it to generate
-text that makes sense in context.
-
-This works because the cell state is built to store past time steps in a
-memory and CPU efficient way. So even though the cell state memory footprint is
-small (e.g. 100-200 bytes), it can remember things quite far in the past.
-
-[NEXT]
-![rnn_long_term_deps](images/rnn-long-term-deps-solved.svg)
-
-_note_
-
-Note that there is still a limit to how far back networks with cell states can
-remember. So we reduce the problems expressing long-term dependencies, but we
-don't get rid of it entirely.
-
-Unfortunately, we don't have time in this talk to go into detail on how cell
-states are represented and the different types.
-
-So for this talk, we will treat the state as a "§box" and believe it
-solves the long-term dependency problem.
-
-Here's a link to a great article that explains the most commonly used cell
-state technique in great detail.
-
-[NEXT SECTION]
-## 4. Training RNNs
-
-[NEXT]
-These recurrent networks are trained in the same way as regular network.
-
-[NEXT]
-**Backpropagation and gradient descent**.
-
-![gradient_descent](images/gradient_descent_cropped.gif)
-
-[NEXT]
-![backprop_back_pass](images/backprop_backpass_3.svg)
-
-[NEXT]
-We need data to train the network.
-
-[NEXT]
-#### Gutenberg Datatset
-
-Contains 34,000 English novels.
-
-**https://www.gutenberg.org/**
-
-[NEXT]
-![novel_preprocessing](images/novel_preprocessing.svg)
-
-[NEXT]
-#### Common Training Methods
-
-Run backpropagation after:
-
-|                |                                |
-| -------------- | ------------------------------ |
-| **Stochastic** | one sequence                   |
-| **Batch**      | all sequences                  |
-| **Mini-Batch** | smaller batch of $b$ sequences |
-
-[NEXT]
-We'll use mini-batch.
-
-[NEXT]
-### Why?
-
-|                                                   |                                                       |
-| ------------------------------------------------- | ----------------------------------------------------- |
-| <span style="color: red;">**Stochastic**</span>   | long time to converge on good weights                 |
-| <span style="color: red;">**Batch**</span>        | consumes lots of memory, gets stuck on "okay" weights |
-| <span style="color: green;">**Mini-Batch**</span> | quick to converge and memory efficient                |
-
-[NEXT]
-Iterate across all batches.
-
-Run backpropagation after processing each batch.
-
-![mini_batch_chars](images/mini-batch-chars.svg)
-
-_note_
-Split all the sequences into smaller batches of sequences.
-
-Typically, batch size is between 30 and 100.
+# Crypto-ML Ltd.
 
 
 [NEXT SECTION]
