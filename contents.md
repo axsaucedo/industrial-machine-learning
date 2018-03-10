@@ -15,7 +15,7 @@
 [NEXT]
 <!-- .slide: data-background="images/books_opened.jpg" class="background" -->
 
-### About Me
+<h2>Industrial Machine Learning</h2>
 
 <table class="bio-table">
   <tr>
@@ -1237,8 +1237,8 @@ http://github.com/axsauze/industrial-machine-learning
 
 [NEXT]
 <!-- .slide: data-background="images/books_opened.jpg" class="background" -->
-### Get In Touch
 
+<h2>Industrial Machine Learning</h2>
 
 <table class="bio-table">
   <tr>
@@ -1248,16 +1248,18 @@ http://github.com/axsauze/industrial-machine-learning
         <font style="font-weight: bold">Alejandro Saucedo</font>
         <br>
         <br>
-        CTO, <a href="#">Exponential Tech</a>
-        Head of Eng Dept, <a href="#">Eigen</a>
-        Fellow (AI & ML), <a href="#">The RSA</a>
+        Head of Eng Dept, <a style="color: cyan" href="#">Eigen</a>
+        CTO, <a style="color: cyan" href="#">Exponential Tech</a>
+        Fellow (AI & ML), <a style="color: cyan" href="#">The RSA</a>
         <br>
         <br>
-        <a href="#">a@e-x.io</a>
+        <a style="color: cyan" href="#">a@e-x.io</a>
     </td>
   </tr>
   <tr>
   </tr>
 </table>
 
+<br>
+### <a style="color: cyan" href="#">#PyConSK2018</a>
 
