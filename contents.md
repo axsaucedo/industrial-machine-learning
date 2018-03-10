@@ -39,11 +39,24 @@
 
 # Industry-ready ML
 
-> Theoretical ML crashcourse
+> An intuitive overview on general ML
+> <br>
+> <br>
+> A set of simple ML and heavier DL models
 >
-> Knowledge around distributed ML frameworks
-> 
-> Learning by example. Today we are...
+> A distributed ML architecture
+>
+> An elastically scalable setup
+
+### The big picture
+
+
+[NEXT]
+<!-- .slide: data-background="images/books_opened.jpg" class="background smallquote" -->
+
+# Learning by example
+
+> Today we are...
 
 ## Building a tech startup
 
@@ -80,36 +93,6 @@
 
 </font>
 
-
-[NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background smallquote" -->
-
-# Let's build
-
-> A set of simple ML and heavier DL models
-> <br>
-> <br>
-> A containerised system for deployment
->
-> A distributed ML architecture
->
-> An elastically scalable setup
-
-## In Python (+ others)
-
-[NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background smallquote" -->
-
-# The Result
-
-> A set of simple ML and DL models
-> <br>
-> <br>
-> A Dockerfile and docker-compose file
->
-> A manager-worker architecture with celery
-> 
-> A kubernetes cluster that scales the build
 
 [NEXT]
 <!-- .slide: data-background="images/books_opened.jpg" class="background smallest" -->
@@ -162,12 +145,22 @@ manager.send_tasks()
 <!-- .element style="color: white;" -->
 
 
+[NEXT]
+<!-- .slide: data-background="images/books_opened.jpg" class="background" -->
+### Code
+https://github.com/axsauze/crypto-ml
+
+### Slides
+http://github.com/axsauze/industrial-machine-learning
+
+
+
 
 [NEXT]
 ## #LetsDoThis
 
 [NEXT SECTION]
-# 1. Machine Learning Theory
+# 1. Machine Learning Intuition
 
 [NEXT]
 
@@ -622,18 +615,18 @@ We are building this example with Keras
 ### Training an RNN in Python
 
 <pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
-import utils
 
+def deep_predict(prices):
 
-def deep_predict(prices, times, predict=10):
+    p = 10
 
-    model = utils.get_rnn_model()
+    model = get_rnn_model()
 
-    model.fit(time, prices, batch_size=512, nb_epoch=1, validation_split=0.05)
+    x, y = build_lstm_data(prices, 50)
 
-    predict_times = get_prediction_timeline(times, predict)
+    model.fit(x, y, batch_size=512, nb_epoch=1, validation_split=0.05)
 
-    return model.predict(predict_times)
+    return rnn_predict(model, x, prices)
 
 </code></pre>
 
@@ -663,18 +656,18 @@ def predict(prices, times, predict=10):
 
 
 <pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
-import utils
 
+def deep_predict(prices):
 
-def deep_predict(prices, times, predict=10):
+    p = 10
 
-    model = utils.get_rnn_model()
+    model = get_rnn_model()
 
-    model.fit(time, prices, batch_size=512, nb_epoch=1, validation_split=0.05)
+    x, y = build_lstm_data(prices, 50)
 
-    predict_times = get_prediction_timeline(times, predict)
+    model.fit(x, y, batch_size=512, nb_epoch=1, validation_split=0.05)
 
-    return model.predict(predict_times)
+    return rnn_predict(model, x, prices)
 
 </code></pre>
 
@@ -785,9 +778,9 @@ After CryptoML was caught using deep learning...
 
 ## Their userbase exploded
 
-Now they have 100s of users coming in every day 
+Now they have quite a few users coming in every day 
 
-Each user is running several ML algorithms every second
+Each user is running several ML algorithms concurrently
 
 They tried getting larger and larger AWS servers
 
@@ -1044,19 +1037,19 @@ Now we have to take full advantage of it!
 
 
 [NEXT SECTION]
-# 4. Elastic Infrastructure
+# 4. Elastic DevOps Infrastructure
 
 
 [NEXT]
 The CryptoML team remembers the easy days...
 
-...when they only had 100 new users a day
+...when they only had a few new users a day
 
-Now they have thousands and thousands!
+Now they have much heavier traffic!
 
-They are working with multi-billion $ firms!
+They are working with large organsations!
 
-They are processing millions of ML requests!
+They are processing massive loads of ML requests!
 
 <br>
 ### Their DevOps infrastructure 
@@ -1225,22 +1218,22 @@ the roller-coaster keeps going!
 
 ### But for us?
 
-> Obtained a theoretical understanding on ML
+> Obtained an intuitive understanding on ML
 > 
-> Learned about caviates on practical ML
+> Learned about caveats on practical ML
 > 
 > Obtained tips on building distributed architectures
 > 
-> Got an small taste on elastic DevOps infrastructure
+> Got an taste of elastic DevOps infrastructure
 
 
 [NEXT]
 <!-- .slide: data-background="images/books_opened.jpg" class="background" -->
 ### Code
-https://github.com/DonaldWhyte/deep-learning-with-rnns
+https://github.com/axsauze/crypto-ml
 
 ### Slides
-http://donaldwhyte.co.uk/deep-learning-with-rnns
+http://github.com/axsauze/industrial-machine-learning
 
 [NEXT]
 <!-- .slide: data-background="images/books_opened.jpg" class="background" -->
