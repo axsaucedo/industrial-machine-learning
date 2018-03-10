@@ -4,6 +4,8 @@
 
 Presentation briefly introducing deep learning and how to apply a specific subset of deep learning, recurrent neural networks, to solve real world problems.
 
+You can find the code for this presentation at [https://github.com/axsauze/crypto_ml](https://github.com/axsauze/crypto_ml)
+
 Topics covered:
 
 * Overview of presentation
