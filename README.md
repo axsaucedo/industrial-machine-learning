@@ -1,10 +1,11 @@
 # Deep Learning with Recurrent Neural Networks
 
-### [View Presentation](http://axsauze.github.io/industrial-machine-learning/)
+## [View All Presentation](https://axsauze.github.io/industrial-machine-learning/#/)
 
 Presentation briefly introducing deep learning and how to apply a specific subset of deep learning, recurrent neural networks, to solve real world problems.
 
-#### You can find the code for this presentation at [https://github.com/axsauze/crypto_ml](https://github.com/axsauze/crypto_ml)
+#### Slides: [http://axsauze.github.io/industrial-machine-learning/](http://axsauze.github.io/industrial-machine-learning/)
+#### Slides Repo: [https://github.com/axsauze/crypto_ml](https://github.com/axsauze/crypto_ml)
 
 Topics covered:
 
