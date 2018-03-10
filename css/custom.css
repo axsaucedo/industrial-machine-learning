@@ -114,6 +114,10 @@ img[alt="portrait"] {
     border: 2px solid black !important;
 }
 
+img[alt="celery_celery"] {
+    width: 500px;
+}
+
 img[alt="small_portrait"] {
     width: 220px;
     border: 2px solid black !important;
@@ -166,6 +170,10 @@ img[alt="gradient_descent"] {
 
 img[alt="rnn_diagram"] {
     width: 400px;
+}
+
+img[alt="distributed_architecture"]{
+    width: 800px;
 }
 
 img[alt="deep_rnn_diagram"] {

@@ -39,11 +39,11 @@
 
 # Industry-ready ML
 
-> Practical understading on production ML
+> Theoretical ML crashcourse
 >
 > Knowledge around distributed ML frameworks
 > 
-> Learning by example - today we are...
+> Learning by example. Today we are...
 
 ## Building a tech startup
 
@@ -114,156 +114,144 @@
 [NEXT]
 <!-- .slide: data-background="images/books_opened.jpg" class="background smallest" -->
 
-# The Interface
+## Interface: CryptoLoader
+
+<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
+from crypto_ml.data_loader import CryptoLoader cl
+
+loader = cl()
+
+loader.get_prices("bitcoin")
+> array([ 134.21,  144.54,  139.  , ..., 3905.95, 3631.04, 3630.7 ])
+
+
+loader.get_df("bitcoin").head()
+>            Date    Open    High     Low   Close     Market Cap
+> 1608 2013-04-28  135.30  135.98  132.10  134.21  1,500,520,000
+> 1607 2013-04-29  134.44  147.49  134.00  144.54  1,491,160,000
+> 1606 2013-04-30  144.00  146.93  134.05  139.00  1,597,780,000
+> 1605 2013-05-01  139.00  139.89  107.72  116.99  1,542,820,000
+> 1604 2013-05-02  116.38  125.60   92.28  105.21  1,292,190,000
+
+</code></pre>
+
+<div class="clear-col"></div>
+
+
+[NEXT]
+<!-- .slide: data-background="images/books_opened.jpg" class="background smallest" -->
+
+## Interface: CryptoManager
 
 <pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
 from crypto_ml.manager import CryptoManager as cm
 
-ml = cm()
+manager = cm()
 
-ml.run_distributed_ml()
+manager.send_tasks()
+
+> bitcoin [[4952.28323284 5492.85474648 6033.42626011 6573.99777374 7114.56928738
+> 7655.14080101 8195.71231465 8736.28382828 9276.85534192 9817.42685555]]
+> bitconnect [[157.70136155 181.86603134 206.03070113 230.19537092 254.36004071
+> 278.5247105  302.6893803  326.85405009 351.01871988 375.18338967]]
+
 </code></pre>
 
 <div class="clear-col"></div>
 
 <!-- .element style="color: white;" -->
-## #Winning
 
-[NEXT]
-![novel_preprocessing](images/novel_preprocessing_intro.svg)
+
 
 [NEXT]
 ## #LetsDoThis
 
 [NEXT SECTION]
-# 1. Machine Learning
-
-The Crypto-ML Ltd. devs are trying to figure out what ML really is.
+# 1. Machine Learning Theory
 
 [NEXT]
 
-### Supervised ML Everywhere
+Crypto-ML Ltd. managed to appear in top tech magazines and raise VC money with their initial prototype.
+
+<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
+import random
+
+def predict_crypto(self, crypto_data):
+    # I have no clue what I'm doing
+    return crypto_data * random.uniform(0, 1)
+
+</code></pre>
+
+<br>
+
+### Now they need to figure out what ML is
+
+
+
+[NEXT]
+
+### ML Tutorials Everywhere
+
+![shapes](images/everywhere.jpg)
 
 [NEXT]
 Given some input data, predict the correct output
 
 ![shapes](images/shapes.svg)
 
-What **features** of the input tell us about the output?
+Let's try to predict whether a shape is a square of a triangle
+
+### How do we do this?
 
 [NEXT]
-### Feature Space
+## Let's visualise it
 
-* A feature is some property that describes raw input data
-* Features represented as a vector in **feature space**
-* **Abstract** complexity of raw input for easier processing
+* Imagine a 2-d plot
+* The x-axis is the area of the input shape
+* The y-axis is the perimeter of the input shape
 
 ![classification](images/classification-points.png)
 
-_note_
-In this case, we have 2 features, so inputs are 2D vector that lie in
-a 2D feature space.
-
 [NEXT]
-### Classification
+## All about the function
 
 <div class="left-col">
-  <ul>
-    <li>Training data is used to produce a model</li>
-    <li>$f(x̄) = mx̄ + c$</li>
-    <li>Model divides feature space into segments</li>
-    <li>Each segment corresponds to one <strong>output class</strong></li>
-  </ul>
-</div>
-
-<div class="right-col">
-  ![classification_small](images/classification-line.png)
-</div>
-
-<div class="clear-col"></div>
-
-[NEXT]
-Use trained model to predict outcome of new, unseen data.
-
-[NEXT]
-### Example
-
-<div class="left-col">
-  ![classification_small](images/classification-line.png)
-</div>
-
-<div class="right-col">
-  <br />
-  <br />
-  <p>$x̄ = (area, perimeter)$</p>
-  <p>$m = (1, -3.5)$</p>
-  <p>$c = 0$</p>
-</div>
-
-[NEXT]
-Using this model, let's predict what shape an object is.
-
-| **Feature** |  **Value** |
-| ----------- | ---------- |
-| Area        | 3          |
-| Perimeter   | 1          |
-
-[NEXT]
-<div class="left-col">
-  ![classification_small](images/classification-newinput.png)
-</div>
-
-<div class="right-col">
-  <p>$x̄ = (3, 1)$</p>
-  <p>$f(x̄) = 1(3) + -3.5(1) + 0$</p>
-  <p>$f(x̄) = 3 - 3.5 + 0$</p>
-  <p>$f(x̄) = -0.5$</p>
-  <p>$-0.5 < 0$</p>
-</div>
-
-<div class="clear-col"></div>
-$-0.5 < 0$ means left side of the line.
-
-Input shape is a **triangle**.
-
-[NEXT]
-### The Mighty Perceptron
-
-Synonymous to our linear function `f(x) = mx + c`
+**$f(x̄) = mx̄ + b$**, where:
 <br>
 <br>
+**x̄** is input (area & perimeter) </li>
+<br>
+<br>
+**m** and **b** are weights/bias
+<br>
+</div>
 
-### `f(wx + b) = y`
+<img width="40%" src="images/classification-line.png">
 
-![perceptron](images/perceptron.svg)
-
-[NEXT]
-### Single neuron &mdash; one output
-
-![rnn_diagram](images/rnn-perceptron.svg)
-
-[NEXT]
-### Neural network &mdash; multiple outputs
-
-![rnn_diagram](images/rnn-feedforward.svg)
-
-[NEXT]
-### Deep Networks &mdash; many hidden layers
-
-![deep_rnn_diagram](images/rnn-deepfeedforward.svg)
-
-
-
+The result **$f(x̄)$** states whether it's a triangle or square
+<br>
+<br>
+(i.e. if it's larger than 0.5 it's triangle otherwise square)
 
 [NEXT]
-### The Hard Part
+### We let the machine do the learning
 
-> Learning $m$ and $c$.
+![classification](images/feature-1.jpg)
+
+[NEXT]
+### We let the machine do the learning
+
+![classification](images/feature-2.jpg)
+
+[NEXT]
+### We let the machine do the learning
+
+![classification](images/feature-3.jpg)
 
 [NEXT]
 ### Minimising loss function
 
-We optimise the network by **minimising its loss**.
+We optimise the model by **minimising its loss**.
 
 Keep adjusting the weights...
 
@@ -272,17 +260,89 @@ Keep adjusting the weights...
 ![gradient_descent](images/gradient_descent_cropped.gif)
 
 
-[NEXT]
-### More complex ML
 
-By stacking more of these functions together, we can process more complex data!
+
+[NEXT]
+### Finding the weights!
+
+<img width="40%" src="images/classification-line.png">
+
+When it finishes, we find optimised weights and biases
+
+i.e. **$f(x̄)$ = triangle  if ($0.3 x̄ + 10$) > 0.5 else square**
+
+[NEXT]
+### Now predict new data
+
+![classification_small](images/classification-newinput.png)
+
+Once we have our function, we can predict NEW data!
+
+
+[NEXT]
+### We're ML experts!
+
+Please collect your certificates after the talk
+<br>
+<br>
+
+These are valid in:
+
+* Your Linkedin profile
+* Non-tech Meetups and Parties
+* Any time you reply to a tweet
+
+[NEXT]
+
+### In all seriousness...
+
+`f(x) = mx + b`  
+
+is the single perceptron function
+
+in a neural network
+<br>
+
+![perceptron](images/perceptron.svg)
+
+
+[NEXT]
+### Instead of just one neuron
+
+![rnn_diagram](images/rnn-perceptron.svg)
+
+[NEXT]
+### We just have many
+
+![rnn_diagram](images/rnn-feedforward.svg)
+
+This gives the function more flexibility
+
+
+[NEXT]
+### With a few layers
+
+![deep_rnn_diagram](images/rnn-feedforwardlayers.svg)
+
+This gives more flexibility for learning
+
+
+
+[NEXT]
+But what about with more complex cases?
+
+![perceptron_learning](images/perceptron_learning4.png)
 
 [NEXT]
 
 ### Deep Neural Networks 
-Deep neural nets can learn and predict very complex patterns of data.
 
+![perceptron_learning](images/layer.jpg)
 
+[NEXT]
+### Deep Networks &mdash; many hidden layers
+
+![deep_rnn_diagram](images/rnn-deepfeedforward.svg)
 
 [NEXT]
 ![perceptron_learning](images/perceptron_learning1.png)
@@ -298,13 +358,68 @@ Deep neural nets can learn and predict very complex patterns of data.
 
 
 
-[NEXT]
-Can this be used for sequential data?
+[NEXT SECTION]
+# 2. Machine Learning in Practice
+
+
 
 [NEXT]
-# No.
+The real world has more varied and complex cases
 
-Processing sequential requires memory of what was seen previously.
+You need a pragmatic approach
+
+<div class="right-col">
+![perceptron_learning](images/perceptron_learning4.png)
+</div>
+
+<br>
+<div class="left-col">
+<ul>
+<li> Extending our feature space</li>
+<li> Increasing number of inputs</li>
+<li> Regularisation techniques (dropout, batch normalisation)</li>
+<li> Normalising datasets</li>
+</ul>
+
+</div>
+
+
+
+
+[NEXT]
+The Crypto-ML devs asked themselves...
+
+<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
+from crypto_ml.data_loader import CryptoLoader
+
+btc = CryptoLoader().get_df("bitcoin")
+
+btc.head()
+
+>            Date    Open    High     Low   Close     Market Cap
+> 1608 2013-04-28  135.30  135.98  132.10  134.21  1,500,520,000
+> 1607 2013-04-29  134.44  147.49  134.00  144.54  1,491,160,000
+> 1606 2013-04-30  144.00  146.93  134.05  139.00  1,597,780,000
+> 1605 2013-05-01  139.00  139.89  107.72  116.99  1,542,820,000
+> 1604 2013-05-02  116.38  125.60   92.28  105.21  1,292,190,000
+
+
+</code></pre>
+
+We are now experts in ML, however...
+
+...can this be used for our cryptocurrency price data?
+
+[NEXT]
+# Not yet.
+
+Processing sequential data requires a different approach.
+<br>
+<br>
+
+Instead of trying to predict two classes...
+
+...we want to predict future steps
 <br>
 <br>
 
@@ -314,30 +429,121 @@ Processing sequential requires memory of what was seen previously.
 
 # Sequential Models
 
-> Linear Regression
->
-> Support Vector Regression
+Sequential models often are used to predict future data.
 
-## Recurrent Neural Networks (LSTMs)
+<div class="left-col">
+![classification_small](images/linreg.gif)
+</div>
+
+<div class="right-col">
+Still uses the same approach
+<br>
+
+`f(x) = mx + b`  
+<br>
+To find the weights and biases
+<br>
+<br>
+
+But can be used on time-sequence data - ie. prices, words, characters, etc.
+</div>
+
+
+
 
 [NEXT]
 
-Sequential models often are used to predict future data.
+## The hello_world of ML
 
-This can be time-sequence data, text characters, etc.
+Predicting prices by fitting a line on set of time-series points
+
+![classification_small](images/linear-regression.png)
+
+### Linear Regression
+
+
+[NEXT]
+
+# Linear Regression
+
+<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
+from sklearn import linear_model
+
+
+def predict(prices, times, predict=10):
+
+    model = linear_model.LinearRegression()
+
+    model.fit(times, prices)
+
+    predict_times = get_prediction_timeline(times, predict)
+
+    return model.predict(predict_times)
+
+</code></pre>
+
+[NEXT]
+# Linear Regression
+
+<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
+from crypto_ml.data_loader import CryptoLoader
+
+
+cl = CryptoLoader()
+
+df = cl.get_df("bitcoin")
+
+times = df[["Date"]].values
+prices = df[["Price"]].values
+
+results = predict(prices, times, 5)
+
+</code></pre>
+
+### Success
+
+[NEXT]
+### But the Crypto-ML team wants 
+#cutting edge tech
+
+[NEXT]
+
+# Deep Recurrent 
+# Neural Networks 
 
 [NEXT]
 
 ### Deep Recurrent Neural Networks
-Sequential NN to predict complex patterns in sequential data such as language, bitcoin prices, etc
+They are pretty much deep neural networks.
+<br>
+<br>
 
-We can encode memory into the algorithm.
+But their use is to predict a future time-step...
+
+...instead of predicting a class.
 
 
 [NEXT]
-### Deep Networks &mdash; many hidden layers
+### Deep Recurrent Neural Networks
+
+Because of the layers and neurons:
+
+* They can hold more complex functions/models.
+
+* They can take more complex features.
+
+* They require more data
+
+[NEXT]
+### Let's recall deep neural nets
 
 ![deep_rnn_diagram](images/rnn-deepfeedforward.svg)
+
+
+[NEXT]
+### Simplified Visualisation
+![rnn_compress_expanded](images/rnn-compress-expanded.svg)
+One node represents a full layer of neurons.
 
 [NEXT]
 ### Simplified Visualisation
@@ -346,8 +552,15 @@ We can encode memory into the algorithm.
 
 One node represents a full layer of neurons.
 
+
 [NEXT]
-![rnn_compress_expanded](images/rnn-compress-expanded.svg)
+### Unrolled Recurrent Network
+Previous predictions help make the _next_ prediction.
+
+Each prediction is a **time step**.
+
+![rnn_unrolled_chars](images/rnn-unrolled-chars1.svg)
+
 
 [NEXT]
 ### Recurrent Networks
@@ -357,16 +570,7 @@ One node represents a full layer of neurons.
 Hidden layer's input includes the output of itself during the last run of the
 network.
 
-[NEXT]
-### Unrolled Recurrent Network
-Previous predictions help make the _next_ prediction.
 
-Each prediction is a **time step**.
-
-![rnn_unrolled](images/rnn-unrolled.svg)
-
-[NEXT]
-![rnn_unrolled_chars](images/rnn-unrolled-chars1.svg)
 
 [NEXT]
 ![rnn_unrolled_chars](images/rnn-unrolled-chars2.svg)
@@ -390,10 +594,474 @@ Each prediction is a **time step**.
 ![rnn_unrolled_chars](images/rnn-unrolled-chars8.svg)
 
 [NEXT]
+
+### Loss/Cost function
+Cost function is based on getting the prediction right!
+
 ![rnn_unrolled_chars](images/rnn-unrolled-chars9.svg)
 
+
 [NEXT]
-# Crypto-ML Ltd.
+### Deep learning framework
+
+We are building this example with Keras
+
+![icon_keras](images/keras_icon.svg)
+
+<br>
+
+#### There are many others to choose from
+
+![icon_tensorflow](images/tensorflow_icon.svg)
+![icon_caffe](images/caffe_icon.svg)
+
+![icon_pytorch](images/pytorch_icon.svg)
+![icon_theano](images/theano_icon.svg)
+
+[NEXT]
+### Training an RNN in Python
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+import utils
+
+
+def deep_predict(prices, times, predict=10):
+
+    model = utils.get_rnn_model()
+
+    model.fit(time, prices, batch_size=512, nb_epoch=1, validation_split=0.05)
+
+    predict_times = get_prediction_timeline(times, predict)
+
+    return model.predict(predict_times)
+
+</code></pre>
+
+* Build model
+* Compute the weights
+* Return the prediction
+
+
+[NEXT]
+### Not too different, eh!
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+from sklearn import linear_model
+
+
+def predict(prices, times, predict=10):
+
+    model = linear_model.LinearRegression()
+
+    model.fit(times, prices)
+
+    predict_times = get_prediction_timeline(times, predict)
+
+    return model.predict(predict_times)
+
+</code></pre>
+
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+import utils
+
+
+def deep_predict(prices, times, predict=10):
+
+    model = utils.get_rnn_model()
+
+    model.fit(time, prices, batch_size=512, nb_epoch=1, validation_split=0.05)
+
+    predict_times = get_prediction_timeline(times, predict)
+
+    return model.predict(predict_times)
+
+</code></pre>
+
+
+[NEXT]
+### To build the LSTM
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+from keras.layers.core import Dense, Activation, Dropout
+from keras.layers.recurrent import LSTM
+from keras.models import Sequential
+import lstm
+
+def get_rnn_model():
+    model = Sequential()
+    model.add(LSTM(input_dim=1, output_dim=50, return_sequences=True))
+    model.add(Dropout(0.2))
+
+    model.add(LSTM(100, return_sequences=False))
+    model.add(Dropout(0.2))
+
+</code></pre>
+
+In this case 50 recurrent layers that pass output to next layer...
+
+...and 100 that don't pass output until end of sequence
+
+(+ regulatisation)
+
+
+[NEXT]
+### Finishing the model
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+from keras.layers.core import Dense, Activation, Dropout
+from keras.layers.recurrent import LSTM
+from keras.models import Sequential
+import lstm
+
+def get_rnn_model():
+    model = Sequential()
+    model.add(LSTM(input_dim=1, output_dim=50, return_sequences=True))
+    model.add(Dropout(0.2))
+
+    model.add(LSTM(100, return_sequences=False))
+    model.add(Dropout(0.2))
+
+    model.add(Dense(output_dim=1))
+    model.add(Activation('linear'))
+
+    model.compile(loss="mse", optimizer="rmsprop")
+
+    return model
+
+</code></pre>
+
+A linear dense layer to aggregate the data into a single value
+
+Compile with mean sq. error & gradient descent as optimizer
+
+Simple!
+
+
+[NEXT]
+# RNN Test-run
+
+<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
+from crypto_ml.data_loader import CryptoLoader
+
+
+cl = CryptoLoader()
+
+df = cl.get_df("bitcoin")
+
+times = df[["Date"]].values
+prices = df[["Price"]].values
+
+results = deep_predict(prices, times, 5)
+
+</code></pre>
+
+
+### Success
+
+[NEXT]
+
+# Crypto has the ML
+
+Are we done?
+
+# No.
+
+The fun is just starting
+
+
+[NEXT SECTION]
+
+# 3. Distributed Architecture
+
+[NEXT]
+
+After CryptoML was caught using deep learning...
+
+...they were featured in the top 10 global news
+
+[NEXT]
+
+## Their userbase exploded
+
+Now they have 100s of users coming in every day 
+
+Each user is running several ML algorithms every second
+
+They tried getting larger and larger AWS servers
+
+[NEXT]
+## They should've seen this coming
+
+* Machine learning is known for being computing heavy
+* But often it's forgotten how memory-heavy it is
+* I'm talking VERY heavy - holding whole models in-mem
+* Scaling to bigger instances with more cores is expensive
+* Having everything in one node is a central point of failure
+
+<br>
+### It's time to go distributed
+
+[NEXT]
+### Producer-consumer Architecture
+
+![distributed_architecture](images/distributed.png)
+
+The Crypto-ML Devs thought go distributed was too hard
+
+**It's not.**
+
+[NEXT]
+# Introducing Celery
+
+![celery_celery](images/celery.jpg)
+
+* Distributed
+* Asynchronous
+* Task Queue
+* For Python
+
+[NEXT]
+## Step 1: Take your code
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+
+def deep_predict(prices, times, predict=10):
+
+    model = utils.get_rnn_model()
+
+    model.fit(time, prices, batch_size=512, nb_epoch=1, validation_split=0.05)
+
+    predict_times = get_prediction_timeline(times, predict)
+
+    return model.predict(predict_times)
+
+</code></pre>
+
+[NEXT]
+## Step 2: Celerize it
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+
+@app.task
+def deep_predict(prices, times, predict=10):
+
+    model = utils.get_rnn_model()
+
+    model.fit(time, prices, batch_size=512, nb_epoch=1, validation_split=0.05)
+
+    predict_times = get_prediction_timeline(times, predict)
+
+    return model.predict(predict_times)
+
+</code></pre>
+
+[NEXT]
+## Step 3: Make sure it works
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+from celery import Celery
+from utils import load, dump
+
+app = Celery('crypto_ml',
+    backend='amqp://guest@localhost/',    
+    broker='amqp://guest@localhost/')
+
+@app.task
+def deep_predict(d_prices, d_times, predict=10):
+
+    # Load from stringified binaries (Pandas Dataframes)
+    prices = load(d_prices)
+    times = load(d_times)
+
+    model = utils.get_rnn_model()
+
+    model.fit(time, prices, batch_size=512, nb_epoch=1, validation_split=0.05)
+
+    predict_times = get_prediction_timeline(times, predict)
+
+    return dump(model.predict(predict_times))
+
+</code></pre>
+
+Disclaimer: I haven't for this snippet
+
+[NEXT]
+## Step 4: Run it!
+
+<pre><code class="code bash hljs" style="font-size: 0.8em; line-height: 1em; ">
+$ celery -A crypto_ml worker
+
+</code></pre>
+
+See the activity logs:
+
+``` bash
+Darwin-15.6.0-x86_64-i386-64bit 2018-03-10 00:43:28
+
+[config]
+.> app:         crypto_ml:0x10e81a9e8
+.> transport:   amqp://user:**@localhost:5672//
+.> results:     amqp://
+.> concurrency: 8 (prefork)
+.> task events: OFF (enable -E to monitor tasks in this worker)
+
+[queues]
+.> celery           exchange=celery(direct) key=celery
+
+```
+
+
+[NEXT]
+
+## We're already halfway there
+
+Now we just need to make the producer!
+
+**We can just follow the same recipe**
+
+[NEXT]
+
+## Step 1: Take the code
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+cl = CryptoLoader()
+results = {}
+
+# Compute results
+for name in cl.get_crypto_names():
+
+    prices, times = cl.get_prices(name)
+
+    result = deep_predict(prices, times)
+
+    results[name] = result
+
+# Print results
+for k,v in results.items():
+    print(k, v)
+
+
+</code></pre>
+
+[NEXT]
+## Step 2: Celerize it
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+cl = CryptoLoader()
+results = {}
+
+# Send task for distributed computing
+for name in cl.get_crypto_names():
+
+    prices, times = cl.get_prices(name)
+
+    task = deep_predict.delay(
+                      dump(prices)
+                    , dump(times))
+
+    results[name] = task
+
+# Wait for results and print
+for k,v in results.items():
+    p_result = v.get()
+
+    result = load(p_result)
+
+    print(k, result)
+
+</code></pre>
+
+[NEXT]
+## Step 3: Make sure it works
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">from crypto_ml.data_loader import CryptoLoader
+from util import load, dump
+
+cl = CryptoLoader()
+results = {}
+
+# Send task for distributed computing
+for name in cl.get_crypto_names():
+
+    prices, times = cl.get_prices(name)
+
+    task = deep_predict.delay(
+                      dump(prices)
+                    , dump(times))
+
+    results[name] = task
+
+# Wait for results and print
+for k,v in results.items():
+    p_result = v.get()
+
+    if result:
+        result = load(p_result)
+        print(k, result)
+
+</code></pre>
+
+Disclaimer: I haven't for this snippet
+
+
+[NEXT]
+## Step 4: Run it!
+
+By just running the Python in a shell command!
+
+
+![distributed_architecture](images/distributed.png)
+
+[NEXT]
+
+# Visualise it
+
+You can visualise through Celery "Flower"
+
+``` bash
+$ celery -A crypto_ml flower
+> INFO: flower.command: Visit me at http://localhost:5555
+```
+
+![distributed_architecture](images/flower.png)
+
+
+[NEXT]
+# Distriuted #Win
+
+We now have ML, and are distributed.
+
+We have surely won.
+
+### Not really 
+
+Having a horizontal architecture is just the first step...
+
+Now we have to take full advantage of it!
+
+
+
+[NEXT SECTION]
+# 4. Elastic Infrastructure
+
+
+[NEXT]
+The CryptoML team remembers the easy days...
+
+...when they only had 100 new users a day
+
+Now they have thousands and thousands!
+
+They are working with multi-billion $ firms!
+
+They are processing millions of ML requests!
+
+<br>
+### Their infrastructure isn't keeping up
+
+
+
 
 
 [NEXT SECTION]
@@ -534,7 +1202,7 @@ NUM_HIDDEN_LAYERS = 3
 [NEXT]
 ```python
 # Dimensions: [ BATCH_SIZE, SEQUENCE_LEN ]
-X = tf.placeholder(tf.uint8, [None, None], name='X')
+X = tf.placeholder(tf.uint8, [None, None], name='pX')
 ```
 
 ![full_network_small](images/full_network_input.svg)
