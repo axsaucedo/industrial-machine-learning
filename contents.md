@@ -761,11 +761,12 @@ results = deep_predict(prices, times, 5)
 
 [NEXT]
 
-# Crypto has the ML
+## Crypto-ML 
+# has the ML!
 
-Are we done?
+Are we done then?
 
-# No.
+# Nope
 
 The fun is just starting
 
@@ -1058,630 +1059,179 @@ They are working with multi-billion $ firms!
 They are processing millions of ML requests!
 
 <br>
-### Their infrastructure isn't keeping up
-
-
-
-
-
-[NEXT SECTION]
-## 5. Neural Nets in Python
-
-[NEXT]
-Building a neural network involves:
-
-1. defining its architecture
-2. learning the weight matrices for that architecture
-
-_note_
-1. e.g. number of layers, whether to have loops, what type of cell state to use
-2. running an optimiser like gradient descent to train network on training dataset
-
-[NEXT]
-### Problem: complex graphs
-
-![nn_computation_graph](images/nn_computation_graph.png)
-
-_note_
-Source: https://devblogs.nvidia.com/parallelforall/recursive-neural-networks-pytorch/
-
-Here is a small section of the computation graph required to train a simple
-recurrent network.
-
-[NEXT]
-### Problem: Complex Derivations
-
-![nn_backprop_algebra](images/nn_backprop_algebra.png)
-
-_note_
-Source: https://geekyisawesome.blogspot.co.uk/2016/06/the-backpropagation-algorithm-for.html
-
-This is some of the algebra require for one step of backpropagaiton/training
-for a single layer. And this is basic neural network with lno oops or cell states.
-
-[NEXT]
-### Solution
-
-![tensorflow](images/tensorflow.svg)
-
-* Can build very complex networks quickly
-* Easy to extend if required
-* Built-in support for RNN memory cells
-
-[NEXT]
-### Other Python Neural Net Libraries
-
-![icon_tensorflow](images/tensorflow_icon.svg)
-![icon_keras](images/keras_icon.svg)
-![icon_caffe](images/caffe_icon.svg)
-
-![icon_pytorch](images/pytorch_icon.svg)
-![icon_theano](images/theano_icon.svg)
-
-_note_
-Allows user to write symbolic mathematical expressions, then automatically generates their derivatives, saving the user from having to code gradients or backpropagation. These symbolic expressions are automatically compiled to CUDA code for a fast, on-the-GPU implementation.
-
-Theano: The reference deep-learning library for Python with an API largely compatible with the popular NumPy library.
-
-* Good visualisation tools
-
-[NEXT SECTION]
-## 6. Tensorflow
-
-#### Building our Model
+### Their DevOps infrastructure 
+# Can't keep up!
 
 [NEXT]
 
-![full_network](images/full_network_headers.svg)
-#### Build a recurrent neural network to generate stories in Tensorflow.
+### Underestimating DevOps complexity
+
+* Complexity of staging and deploying ML models
+* Backwards compatibility of feature-spaces/models
+* Distributing load across infrastructure
+* Idle resource time minimisation
+* Node failure back-up strategies
+* Testing of Machine Learning functionality
+* Monitoring of ML ecosystem
+* And the list goes on and on...
+
 
 [NEXT]
-### How?
+## Did anyone say docker?
 
-Build a computation graph that learns the weights of our network.
+![weight_matrix](images/docker.png)
 
-[NEXT]
-### The Computation Graph
+Package it. Ship it.
 
-|                |                                                                                   |
-| -------------  | --------------------------------------------------------------------------------- |
-| `tf.Tensor`    | Unit of data. Vectors or matrices of values (floats, ints, etc.).             |
-| `tf.Operation` | Unit of computation. Takes 0+ `tf.Tensor`s as inputs and outputs 0+ `tf.Tensor`s. |
-| `tf.Graph`     | Collection of connected `tf.Tensor`s and `tf.Operation`s. |
-
-Operations are nodes and tensors are edges.
 
 [NEXT]
-### The Computation Graph
-![tensorflow_graph_marked](images/tensorflow_graph_marked.png)
-
-[NEXT]
-
-#### Graph that triples numbers and sums them.
-
-```python
-# 1. Define Inputs
-# Input is a 2D vector containing the two numbers to triple.
-inputs = tf.placeholder(tf.float32, [2])
-
-# 2. Define Internal Operations
-tripled_numbers = tf.scalar_mul(3, inputs)
-
-# 3. Define Final Output
-# Sum the previously tripled inputs.
-output_sum = tf.reduce_sum(tripled_numbers)
-
-# 4. Run the graph with some inputs to produce the output.
-session = tf.Session()
-result = session.run(output_sum, feed_dict={inputs: [300, 10]})
-print(result)
-```
-
-Output
+## Gotta love the simplicity
 
 ```
-930
+from conda/miniconda3-centos7:latest
+
+ADD . /crypto_ml/
+WORKDIR /crypto_ml/
+
+# Dependency for one of the ML predictors
+RUN yum install mesa-libGL -y
+
+# Install all the dependencies
+RUN conda env create -f crypto_ml.yml
+```
+
+and...
+
+```
+docker -t crypto_ml .
+```
+
+it's done!
+
+
+[NEXT]
+## Can this be more awesome?
+####Yes it can!
+
+Packaging it up and installing through pip/conda.
+
+```
+from conda/miniconda3-centos7:latest
+RUN conda install <YOUR_PACKAGE>
+```
+Nice and simple!
+
+[NEXT]
+### The obvious docker-compose
+<pre><code class="code python hljs" style="font-size: 0.6em; line-height: 1em">version: '2'
+services:
+    manager:
+        container_name: crypto_manager
+        image: crypto_ml
+        build: .
+        links:
+            - rabbitmq
+        depends_on:
+            - rabbitmq
+        command: tail -f /dev/null
+    worker:
+        container_name: crypto_worker
+        image: crypto_ml
+        build: .
+        links:
+            - rabbitmq
+        depends_on:
+            - rabbitmq
+        command: /usr/local/envs/crypto_ml/bin/celery -A crypto_ml worker --prefetch-multiplier 1 --max-tasks-per-child 1 -O fair
+    rabbitmq:
+        container_name: rabbitmq
+        image: rabbitmq:3.6.0
+        environment:
+            - RABBITMQ_DEFAULT_USER=user
+            - RABBITMQ_DEFAULT_PASS=1234
+        ports:
+            - 4369
+            - 5672
+            - 15672
+</code></pre>
+
+It all just works automagically!
+
+```
+docker-compose up --scale crypto_worker=4
 ```
 
 [NEXT]
-### Defining Hyperparameters
+#### Taking it to the next level with
+# Kubernetes
 
-```python
-# Input Hyperparameters
-SEQUENCE_LEN = 30
-BATCH_SIZE = 200
-ALPHABET_SIZE = 98
+![weight_matrix](images/kube.png)
 
-# Hidden Recurrent Layer Hyperparameters
-HIDDEN_LAYER_SIZE = 512
-NUM_HIDDEN_LAYERS = 3
+[NEXT]
+#### All the YML
+
+![distributed_architecture](images/kubectl.png)
+
+Creating all the services and controllers
+
 ```
-# 
-![full_network_small](images/full_network_headers.svg)
-
-[NEXT]
-```python
-# Dimensions: [ BATCH_SIZE, SEQUENCE_LEN ]
-X = tf.placeholder(tf.uint8, [None, None], name='pX')
-```
-
-![full_network_small](images/full_network_input.svg)
-
-[NEXT]
-```python
-# Dimensions: [ BATCH_SIZE, SEQUENCE_LEN, ALPHABET_SIZE ]
-Xo = tf.one_hot(X, ALPHABET_SIZE, 1.0, 0.0)
-```
-
-![full_network_small](images/full_network_onehot.svg)
-
-[NEXT]
-
-### Defining Hidden State
-
-![full_network_small](images/full_network_hidden.svg)
-
-
-_note_
-Recap how the deep RNN cell layers work.
-
-[NEXT]
-### Defining Hidden State
-```python
-from tensorflow.contrib import rnn
-
-# Cell State
-# [ BATCH_SIZE, HIDDEN_LAYER_SIZE * NUM_HIDDEN_LAYERS]
-H_in = tf.placeholder(
-    tf.float32,
-    [None, HIDDEN_LAYER_SIZE * NUM_HIDDEN_LAYERS],
-    name='H_in')
-
-# Create desired number of hidden layers that use the `GRUCell`
-# for managing hidden state.
-cells = [
-    rnn.GRUCell(HIDDEN_LAYER_SIZE)
-    for _ in range(NUM_HIDDEN_LAYERS)
-]
-multicell = rnn.MultiRNNCell(cells)
-```
-
-_note_
-Point out that GRU cells is one of the most common methods for storing cell
-states in hidden layers.
-
-LSTM vs GRU difference:
-
-From: https://www.quora.com/Are-GRU-Gated-Recurrent-Unit-a-special-case-of-LSTM
-
-The other answer is already great. Just to add, GRU is related to LSTM as both
-are utilizing different way if gating information to prevent vanishing gradient
-problem.
-
-GRU is relatively new, and from what I can see it's performance is on par with
-LSTM, but computationally more efficient (less complex structure as pointed
-out). So we are seeing it being used more and more.
-
-[NEXT]
-### Unrolling Recurrent Network Layers
-![rnn_unrolled](images/rnn-unrolled.svg)
-
-[NEXT]
-### Unrolling Recurrent Network Layers
-```python
-Yr, H_out = tf.nn.dynamic_rnn(
-    multicell,
-    Xo,
-    dtype=tf.float32,
-    initial_state=H_in)
-
-# Yr =    output of network. probability distribution of
-#         next character.
-# H_out = the altered hidden cell state after processing
-#         last input.
-```
-Wrap recurrent hidden layers in `tf.dynamic_rnn`.
-
-Unrolls loops when computation graph is running.
-
-Loops will be unrolled `SEQUENCE_LENGTH` times.
-
-
-_note_
-The loops will be unrolled `SEQUENCE_LENGTH` times. You can think of this as us
-copying all the hidden layer nodes for each unroll, creating a computation
-graph that has 30 sets of hidden layers.
-
-Note that `H_out` is the input hidden cell state that's been updated by the
-last input. `H_out` is used as the next character's input (`H_in`).
-
-
-
-[NEXT]
-### Output is probability distribution
-
-![full_network_small](images/full_network_softmax.svg)
-
-```python
-from tensorflow.contrib import layers
-
-# [ BATCH_SIZE x SEQUENCE_LEN, HIDDEN_LAYER_SIZE ]
-Yflat = tf.reshape(Yr, [-1, HIDDEN_LAYER_SIZE])
-# [ BATCH_SIZE x SEQUENCE_LEN, ALPHABET_SIZE ]
-Ylogits = layers.linear(Yflat, ALPHABET_SIZE)
-# [ BATCH_SIZE x SEQUENCE_LEN, ALPHABET_SIZE ]
-Yo = tf.nn.softmax(Ylogits, name='Yo')
-```
-
-_note_
-Flatten the first two dimensions of the output:
-
-[ BATCHSIZE, SEQLEN, ALPHASIZE ] => [ BATCHSIZE x SEQLEN, ALPHASIZE ]
-
-Then apply softmax readout layer. The output of the softmax `Yo` is the
-probability distribution
-
-With this readout layer, the weights and biases are shared across unrolled time
-steps. Doing this treats values coming from a single sequence time step (one
-char) and values coming from a mini-batch run as the same thing.
-
-[NEXT]
-### Pick most probable character
-
-![full_network_small](images/full_network_output.svg)
-
-```python
-# [ BATCH_SIZE * SEQUENCE_LEN ]
-Y = tf.argmax(Yo, 1)
-# [ BATCH_SIZE, SEQUENCE_LEN ]
-Y = tf.reshape(Y, [BATCH_SIZE, -1], name="Y")
+kubectl create -f k8s/*
 ```
 
 [NEXT]
-Remaining tasks:
 
-* define our loss function
-* decide what weight optimiser to use
+# Kubernetes: Dev
 
-[NEXT]
-### Loss Function
-
-Needs:
-
-1. the **real** output of the network after each batch
-2. the **expected** output (from our training data)
-
-_note_
-Used to compute a "loss" number that indicates how well the networking is
-is predicting the next char.
+#### Development
+* Minikube
+* Docker for Mac
 
 [NEXT]
-### Loss Function
-![full_network_loss](images/full_network_loss.svg)
+
+# Kubernetes: Prod
+#### Enterprise
+* Elastic Container Service for K8s (AWS)
+* CoreOS Tectonic
+* Red Hat OpenShift
 
 [NEXT]
-### Loss Function
-
-Input expected next chars into network:
-
-```python
-# [ BATCH_SIZE, SEQUENCE_LEN ]
-Y_ = tf.placeholder(tf.uint8, [None, None], name='Y_')
-
-# [ BATCH_SIZE, SEQUENCE_LEN, ALPHABET_SIZE ]
-Yo_ = tf.one_hot(Y_, ALPHABET_SIZE, 1.0, 0.0)
-
-# [ BATCH_SIZE x SEQUENCE_LEN, ALPHABET_SIZE ]
-Yflat_ = tf.reshape(Yo_, [-1, ALPHABET_SIZE])
-```
+# Kubernetes: Tools
+#### Many options
+* CloudFormation (AWS)
+* Terraform
+* Kops
 
 [NEXT]
-### Loss Function
-Defining the loss function:
+#### Docker for Mac now supports it!
 
-```
-# [ BATCH_SIZE * SEQUENCE_LEN ]
-loss = tf.nn.softmax_cross_entropy_with_logits(
-    logits=Ylogits,
-    labels=Yflat_)
+![weight_matrix](images/docker-mac.png)
 
-# [ BATCH_SIZE, SEQUENCE_LEN ]
-loss = tf.reshape(loss, [BATCH_SIZE, -1])
-```
+**Mini fist-pump**
 
-_note_
-We don't have time to cover the details of this loss function. All you need to
-know for this talk is that is a commonly used loss function when predicting
-discrete, category values like characters.
 
 [NEXT]
-### Choose an optimiser
-<br>
+What's next for Crypto-ML?
 
-Will adjust network weights to minimise the `loss`.
+![weight_matrix](images/sv.gif)
 
-```
-train_step = tf.train.GradientDescentOptimizer(lr).minimize(loss)
-```
-<br>
+As with every other tech startup
 
-In the workshop we'll use a flavour called `AdamOptimizer`.
+the roller-coaster keeps going!
 
-[NEXT SECTION]
-## 7. Tensorflow
-
-#### Training the Model
-
-[NEXT]
-### Epochs
-
-We run mini-batch training on the network.
-
-Train network on _all_ batches multiple times.
-
-Each run across all batches is an **epoch**.
-
-**More epochs = better weights = better accuracy.**
-
-_note_
-Of course, the downside of running loads of epochs is that it takes much
-longer to train the network.
-
-[NEXT]
-### Minibatch splitting across epochs
-```python
-# Contains: [Training Data, Test Data, Epoch Number]
-Batch = Tuple[np.matrix, np.matrix, int]
-
-def rnn_minibatch_generator(
-        data: List[int],
-        batch_size: int,
-        sequence_length: int,
-        num_epochs: int) -> Generator[Batch, None, None]:
-
-    for epoch in range(num_epochs):
-        for batch in range(num_batches):
-            # split data into batches, where each batch contains `b` sequences
-            # of length `sequence_length`.
-            training_data = ...
-            test_data = ...
-            yield training_data, c, epoch
-```
-
-_note_
-Omit the details, just explain the underlying concept of splitting one big
-large sequence into more sequences.
-
-[NEXT]
-### Start training
-```python
-# Create the session and initialize its variables to 0.
-init = tf.global_variables_initializer()
-session = tf.Session()
-session.run(init)
-```
-Load dataset and construct mini-batch generator:
-
-```python
-char_integer_list = []
-generator = rnn_minibatch_generator(
-    char_integer_list,
-    BATCH_SIZE,
-    SEQUENCE_LENGTH,
-    num_epochs=10)
-```
-
-[NEXT]
-Run training step on all mini-batches for multiple epochs:
-
-```python
-# Initialise input state
-step = 0
-input_state = np.zeros([
-  BATCH_SIZE, HIDDEN_LAYER_SIZE * NUM_HIDDEN_LAYERS
-])
-
-# Run training step loop
-for batch_input, expected_batch_output, epoch in generator:
-    graph_inputs = {
-      X: batch_input,   Y_: expected_batch_output,
-      Hin: input_state, batch_size: BATCH_SIZE
-    }
-
-    _, output, output_state = session.run(
-        [train_step, Y, H],
-        feed_dict=graph_inputs)
-
-    # Loop state around for next recurrent run
-    input_state = output_state
-    step += BATCH_SIZE * SEQUENCE_LENGTH
-```
-<!-- .element class="small" -->
-
-[NEXT]
-### Final Results
-
-[NEXT]
-<!-- .slide: class="smallestquote" -->
-
-**Epoch 0.0**
-
-> Dy8v:SH3U 2d4  xZ Vaf%hO kS_0i6 7y U5SUu6nSsR0  x MYiZ5ykLOtG3Q,cu St k  V   ctc_N CQFSbF%]q3ZsWWK8wP gyfYt3DpFo yhZ_ss,"IedX%lj,R%_4ux IX5  R%N3wQNG  PnSl 1DJqLdpc[kLeSYMoE]kf xCe29 J[r_k 6BiUs GUguW Y [Kw8"P Sg" e[2OCL%G mad6,:J[A k  5 jz 46iyQLuuT 9qTn GjT6:dSjv6RXMyjxX8:3 h_ cr sYBgnc8 DP04A8laW
-
-[NEXT]
-<!-- .slide: class="smallestquote" -->
-
-**Epoch 0.1**
-
-> Uum awetuarteeuF toBdU iwObaaMlr o rM OufNJetu iida cZeDbRuZfU m igdaao QH NBJ diace e L  cjoXeu ZDjiMftAeN g  iu O Aoc jdjrmIuaai ie t qmuozPwaEkoihca eXuzRCgZ iW AeqapiwaT VInBosPkqroi s yWbJoj  yKq  oUo jebaYigEouzxVb eyt  Px hiamIf vPOiiPu ky Cut LviPoej iE w hpFVxes h zwsvoidmoWxzgTnL ujDt Pr a
-
-[NEXT]
-<!-- .slide: class="smallestquote" -->
-
-**Epoch 1**
-
-> Here is the goal of my further. I shouldn't be the shash of no. Sky is bright and blue as running goeg on.
->
-> Paur decided to move downwards to the floor, where the treasure was stored. She then thought to call her friend from ahead.
-
-[NEXT]
-...
-
-[NEXT]
-<!-- .slide: class="smallestquote" -->
-
-**Epoch 50**
-
-> Gradually drawing away from the rest, two combatants are striving; each devoting every nerve, every energy, to the overthrow of the other.
->
-> But each attack is met by counter attack, each terrible swinging stroke by the crash of equally hard pain or the dull slap of tough hard shield opposed in parry.
->
-> More men are down. Even numbers of men on each side, these two combatants strive on.
-
-[NEXT]
-### Further Examples
-
-Andrej Karpathy's blog post:
-
-[The Unreasonable Effectiveness of Recurrent Neural Networks ](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
-
-[NEXT]
-```c
-/*
- * Increment the size file of the new incorrect UI_FILTER group information
- * of the size generatively.
- */
-static int indicate_policy(void)
-{
-  int error;
-  if (fd == MARN_EPT) {
-    /* The kernel blank will coeld it to userspace. */
-    if (ss->segment < mem_total)
-      unblock_graph_and_set_blocked();
-    else
-      ret = 1;
-    goto bail;
-  }
-  segaddr = in_SB(in.addr);
-  selector = seg / 16;
-  setup_works = true;
-  for (i = 0; i < blocks; i++) {
-    seq = buf[i++];
-    bpf = bd->bd.next + i * search;
-    if (fd) {
-      current = blocked;
-    }
-  }
-  rw->name = "Getjbbregs";
-  bprm_self_clearl(&iv->version);
-  regs->new = blocks[(BPF_STATS << info->historidac)] | PFMR_CLOBATHINC_SECONDS << 12;
-  return segtable;
-}
-```
-<!-- .element class="smaller" -->
-
-[NEXT]
-![latex_generation_example](images/latex-generation-example.png)
 
 
 [NEXT SECTION]
 <!-- .slide: data-background="images/books_opened.jpg" class="background smallest" -->
 
-# Success!
+### But for us?
 
-[NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background smallest" -->
-
-We have created an AI author!
-
-<div class="left-col">
-  <pre><code class="two-col-code python hljs"># ONE
-
-import tensorflow as tf
-from tensorflow.contrib import layers, rnn
-import os
-import time
-import math
-import numpy as np
-tf.set_random_seed(0)
-
-# model parameters
-SEQLEN = 30
-BATCHSIZE = 200
-ALPHASIZE = 89
-INTERNALSIZE = 512
-NLAYERS = 3
-learning_rate = 0.001
-dropout_pkeep = 0.8
-
-codetext, valitext, bookranges = load_data()
-
-# the model
-lr = tf.placeholder(tf.float32, name='lr')  # learning rate
-pkeep = tf.placeholder(tf.float32, name='pkeep')  # dropout parameter
-batchsize = tf.placeholder(tf.int32, name='batchsize')
-
-# inputs
-X = tf.placeholder(tf.uint8, [None, None], name='X')
-Xo = tf.one_hot(X, ALPHASIZE, 1.0, 0.0)
-# expected outputs
-Y_ = tf.placeholder(tf.uint8, [None, None], name='Y_')
-Yo_ = tf.one_hot(Y_, ALPHASIZE, 1.0, 0.0)
-# input state
-Hin = tf.placeholder(tf.float32, [None, INTERNALSIZE*NLAYERS], name='Hin')
-
-# hidden layers
-cells = [rnn.GRUCell(INTERNALSIZE) for _ in range(NLAYERS)]
-multicell = rnn.MultiRNNCell(cells, state_is_tuple=False)
-  </code></pre>
-</div>
-
-<div class="right-col">
-  <pre><code class="two-col-code python hljs"># TWO
-
-Yr, H = tf.nn.dynamic_rnn(multicell, Xo, dtype=tf.float32, initial_state=Hin)
-H = tf.identity(H, name='H')
-
-# Softmax layer implementation
-Yflat = tf.reshape(Yr, [-1, INTERNALSIZE])
-Ylogits = layers.linear(Yflat, ALPHASIZE)
-Yflat_ = tf.reshape(Yo_, [-1, ALPHASIZE])
-loss = tf.nn.softmax_cross_entropy_with_logits(logits=Ylogits, labels=Yflat_)
-loss = tf.reshape(loss, [batchsize, -1])
-Yo = tf.nn.softmax(Ylogits, name='Yo')
-Y = tf.argmax(Yo, 1)
-Y = tf.reshape(Y, [batchsize, -1], name="Y")
-train_step = tf.train.AdamOptimizer(lr).minimize(loss)
-
-# Init for saving models
-if not os.path.exists("checkpoints"):
-    os.mkdir("checkpoints")
-saver = tf.train.Saver(max_to_keep=1000)
-
-# init
-istate = np.zeros([BATCHSIZE, INTERNALSIZE*NLAYERS])
-init = tf.global_variables_initializer()
-sess = tf.Session()
-sess.run(init)
-step = 0
-
-# train on one minibatch at a time
-for x, y_, epoch in txt.rnn_minibatch_sequencer(codetext, BATCHSIZE, SEQLEN, nb_epochs=10):
-    feed_dict = {X: x, Ye: ye, Hin: istate, lr: learning_rate, pkeep: dropout_pkeep, batchsize: BATCHSIZE}
-    _, y, ostate = sess.run([train_step, Y, H], feed_dict=feed_dict)
-
-    if step // 10 % _50_BATCHES == 0:
-        saved_file = saver.save(sess, 'checkpoints/rnn_train_' + timestamp, global_step=step)
-        print("Saved file: " + saved_file)
-
-    istate = ostate
-    step += BATCHSIZE * SEQLEN
-  </code></pre>
-</div>
-
-<div class="clear-col"></div>
-
-Less than 100 lines of Tensorflow code!
+> Obtained a theoretical understanding on ML
+> 
+> Learned about caviates on practical ML
+> 
+> Obtained tips on building distributed architectures
+> 
+> Got an small taste on elastic DevOps infrastructure
 
 
 [NEXT]
@@ -1694,39 +1244,27 @@ http://donaldwhyte.co.uk/deep-learning-with-rnns
 
 [NEXT]
 <!-- .slide: data-background="images/books_opened.jpg" class="background" -->
-## Come to our workshop!
-
-
-[NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background" -->
 ### Get In Touch
+
 
 <table class="bio-table">
   <tr>
-    <td>![small_portrait](images/donald.jpg)</td>
-    <td>![small_portrait](images/alejandro.jpg)</td>
+    <td style="float: left">![portrait](images/alejandro.jpg)</td>
+    <td style="float: left; color: white">
+        <br>
+        <font style="font-weight: bold">Alejandro Saucedo</font>
+        <br>
+        <br>
+        CTO, <a href="#">Exponential Tech</a>
+        Head of Eng Dept, <a href="#">Eigen</a>
+        Fellow (AI & ML), <a href="#">The RSA</a>
+        <br>
+        <br>
+        <a href="#">a@e-x.io</a>
+    </td>
   </tr>
   <tr>
-    <td>
-      [don@donsoft.io](mailto:don@donsoft.io)<br />
-      [@donald_whyte](http://twitter.com/donald_whyte)<br />
-      <span class="github">https://github.com/DonaldWhyte</span>
-    </td>
-    <td>
-      [a@e-x.io](mailto:a@e-x.io)<br />
-      [@AxSaucedo](http://twitter.com/AxSaucedo)<br />
-      <span class="github">https://github.com/axsauze</span>
-    </td>
   </tr>
 </table>
 
-[NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background" -->
 
-### Sources
-
-> [Martin Görner -- Tensorflow RNN Shakespeare](https://github.com/martin-gorner/tensorflow-rnn-shakespeare)
-
-> [Understanding LSTMs](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
-
-> [Composing Music with Recurrent Neural Networks](http://www.hexahedria.com/2015/08/03/composing-music-with-recurrent-neural-networks/)
