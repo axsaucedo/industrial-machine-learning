@@ -12,20 +12,16 @@ Topics covered:
 * Overview of presentation
 * Machine learning expectation and reality
 * Challenges of large scale, industry-ready machine learning
-* Let's build a startup: CryptoML Limited
 * Building the machine learning models
     * Starting out: Linear Regression
     * Exploring: Trying new models
     * Next level: Deep Learning
 * Stepping up our deployment
-    * Dockerising our codebase
-    * Using conda / pypi to build
+    * Containers
 * Serving for the masses
-    * Building a manager-worker architecture
-    * Using celery and rabbitmq to account for this
+    * Using celery and rabbitmq 
 * Taking it to the professional levels
     * Stepping up the game with Kubernetes
-    * Using other devops tools: ELK Monitoring, etc
 
 ## Running Presentation
 
