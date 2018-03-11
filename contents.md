@@ -20,13 +20,16 @@
 <table class="bio-table">
   <tr>
     <td style="float: left">![portrait](images/alejandro.jpg)</td>
-    <td style="float: left; color: white">
+    <td style="float: left; color: white; font-size:0.8em">
         <br>
         <font style="font-weight: bold">Alejandro Saucedo</font>
         <br>
         <br>
         CTO, <a href="#">Exponential Tech</a>
-        Head of Eng Dept, <a href="#">Eigen</a>
+
+        <br>
+        Head of Dep. Eng., <a href="#">Eigen</a>
+        <br>
         Fellow (AI & ML), <a href="#">The RSA</a>
     </td>
   </tr>
@@ -159,7 +162,7 @@ http://github.com/axsauze/industrial-machine-learning
 [NEXT]
 ## #LetsDoThis
 
-[NEXT SECTION]
+[NEXT]
 # 1. Machine Learning Intuition
 
 [NEXT]
@@ -192,7 +195,7 @@ Given some input data, predict the correct output
 
 ![shapes](images/shapes.svg)
 
-Let's try to predict whether a shape is a square of a triangle
+Let's try to predict whether a shape is a square or a triangle
 
 ### How do we do this?
 
@@ -351,7 +354,7 @@ But what about with more complex cases?
 
 
 
-[NEXT SECTION]
+[NEXT]
 # 2. Machine Learning in Practice
 
 
@@ -764,7 +767,7 @@ Are we done then?
 The fun is just starting
 
 
-[NEXT SECTION]
+[NEXT]
 
 # 3. Distributed Architecture
 
@@ -1036,7 +1039,7 @@ Now we have to take full advantage of it!
 
 
 
-[NEXT SECTION]
+[NEXT]
 # 4. Elastic DevOps Infrastructure
 
 
@@ -1213,7 +1216,7 @@ the roller-coaster keeps going!
 
 
 
-[NEXT SECTION]
+[NEXT]
 <!-- .slide: data-background="images/books_opened.jpg" class="background smallest" -->
 
 ### But for us?
