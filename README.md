@@ -13,8 +13,7 @@ Topics covered:
 * Machine learning expectation and reality
 * Challenges of large scale, industry-ready machine learning
 * Building the machine learning models
-    * Starting out: Linear Regression
-    * Exploring: Trying new models
+    * Starting out: Simple models
     * Next level: Deep Learning
 * Stepping up our deployment
     * Containers
