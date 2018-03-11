@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/DonaldWhyte/deep-learning-with-rnns.git"
+    "url": "git://github.com/axsauze/industrial-machine-learning"
   },
   "engines": {
     "node": "~4.1.1"
