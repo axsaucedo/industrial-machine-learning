@@ -17,26 +17,47 @@
 
 <h2>Industrial Machine Learning</h2>
 
+<h4>Horizontally scalable Machine Learning in Python</h4>
+
 <table class="bio-table">
   <tr>
-    <td style="float: left">![portrait](images/alejandro.jpg)</td>
-    <td style="float: left; color: white; font-size:0.8em">
+    <td style="float: left">
+        ![portrait](images/alejandro.jpg)
         <br>
-        <font style="font-weight: bold">Alejandro Saucedo</font>
+        <font style="font-weight: bold; color: white">Alejandro Saucedo</font>
         <br>
         <br>
-        CTO, <a href="#">Exponential Tech</a>
+    </td>
+    <td style="float: left; color: white; font-size: 0.7em;">
 
         <br>
-        Head of Dep. Eng., <a href="#">Eigen</a>
+        Head of Deployed Engineering
         <br>
-        Fellow (AI & ML), <a href="#">The RSA</a>
+        <a style="color: cyan" href="#">Eigen Technologies</a>
+        <br>
+        <br>
+        Chief Technology Officer
+        <br>
+        <a style="color: cyan" href="#">Exponential</a>
+        <br>
+        <br>
+        Chairman
+        <br>
+        <a style="color: cyan" href="#">The Institute for Ethical AI & ML</a>
+        <br>
+        <br>
+        Fellow (AI, Data & ML)
+        <br>
+        <a style="color: cyan" href="#">The RSA</a>
+        <br>
+
     </td>
   </tr>
   <tr>
   </tr>
 </table>
 
+    
 [NEXT]
 <!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
 
@@ -965,6 +986,7 @@ By just running the Python in a shell command!
 
 ![distributed_architecture](images/distributed.png)
 
+
 [NEXT]
 
 # Visualise it
@@ -1200,24 +1222,43 @@ http://github.com/axsauze/industrial-machine-learning
 
 <table class="bio-table">
   <tr>
-    <td style="float: left">![portrait](images/alejandro.jpg)</td>
-    <td style="float: left; color: white">
+    <td style="float: left">
+        ![portrait](images/alejandro.jpg)
         <br>
-        <font style="font-weight: bold">Alejandro Saucedo</font>
-        <br>
-        <br>
-        Head of Eng Dept, <a style="color: cyan" href="#">Eigen</a>
-        CTO, <a style="color: cyan" href="#">Exponential Tech</a>
-        Fellow (AI & ML), <a style="color: cyan" href="#">The RSA</a>
+        <font style="font-weight: bold; color: white">Alejandro Saucedo</font>
         <br>
         <br>
-        <a style="color: cyan" href="#">a@e-x.io</a>
+    </td>
+    <td style="float: left; color: white; font-size: 0.7em;">
+
+        <br>
+        Head of Deployed Engineering
+        <br>
+        <a style="color: cyan" href="#">Eigen Technologies</a>
+        <br>
+        <br>
+        Chief Technology Officer
+        <br>
+        <a style="color: cyan" href="#">Exponential</a>
+        <br>
+        <br>
+        Chairman
+        <br>
+        <a style="color: cyan" href="#">The Institute for Ethical AI & ML</a>
+        <br>
+        <br>
+        Fellow (AI, Data & ML)
+        <br>
+        <a style="color: cyan" href="#">The RSA</a>
+        <br>
+
     </td>
   </tr>
   <tr>
   </tr>
 </table>
 
-<br>
-### <a style="color: cyan" href="#">#PyConSK2018</a>
+### <a style="color: cyan" href="#">Join me at #PyDays18</a>
+
+
 
