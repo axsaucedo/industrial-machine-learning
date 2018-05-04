@@ -1,4 +1,4 @@
-<!-- .slide: data-background="images/books_opened.jpg" class="background" -->
+<!-- .slide: data-background="images/network-background.jpg" class="background" -->
 
 <h2>Industrial Machine Learning</h2>
 <h4>Horizontally scalable Machine Learning in Python</h4>
@@ -13,7 +13,7 @@
 <p>
 
 [NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background" -->
+<!-- .slide: data-background="images/network-background.jpg" class="background" -->
 
 <h2>Industrial Machine Learning</h2>
 
@@ -38,7 +38,7 @@
 </table>
 
 [NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background smallquote" -->
+<!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
 
 # Industry-ready ML
 
@@ -55,7 +55,7 @@
 
 
 [NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background smallquote" -->
+<!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
 
 # Learning by example
 
@@ -64,7 +64,7 @@
 ## Building a tech startup
 
 [NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background smallquote" -->
+<!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
 
 # Crypto-ML Ltd.
 
@@ -79,7 +79,7 @@
 
 
 [NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background smallquote" -->
+<!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
 
 # The Dataset
 
@@ -98,7 +98,7 @@
 
 
 [NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background smallest" -->
+<!-- .slide: data-background="images/network-background.jpg" class="background smallest" -->
 
 ## Interface: CryptoLoader
 
@@ -125,7 +125,7 @@ loader.get_df("bitcoin").head()
 
 
 [NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background smallest" -->
+<!-- .slide: data-background="images/network-background.jpg" class="background smallest" -->
 
 ## Interface: CryptoManager
 
@@ -149,7 +149,7 @@ manager.send_tasks()
 
 
 [NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background" -->
+<!-- .slide: data-background="images/network-background.jpg" class="background" -->
 ### Code
 https://github.com/axsauze/crypto-ml
 
@@ -162,7 +162,7 @@ http://github.com/axsauze/industrial-machine-learning
 [NEXT]
 ## #LetsDoThis
 
-[NEXT]
+[NEXT SECTION]
 # 1. Machine Learning Intuition
 
 [NEXT]
@@ -354,7 +354,7 @@ But what about with more complex cases?
 
 
 
-[NEXT]
+[NEXT SECTION]
 # 2. Machine Learning in Practice
 
 
@@ -767,7 +767,7 @@ Are we done then?
 The fun is just starting
 
 
-[NEXT]
+[NEXT SECTION]
 
 # 3. Distributed Architecture
 
@@ -795,6 +795,7 @@ They tried getting larger and larger AWS servers
 * I'm talking VERY heavy - holding whole models in-mem
 * Scaling to bigger instances with more cores is expensive
 * Having everything in one node is a central point of failure
+* Data pipelines can get quite complex 
 
 <br>
 ### It's time to go distributed
@@ -819,7 +820,7 @@ The Crypto-ML Devs thought go distributed was too hard
 * For Python
 
 [NEXT]
-## Step 1: Take your code
+## Step 1: Choose a function
 
 <pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
 
@@ -838,32 +839,16 @@ def deep_predict(prices, times, predict=10):
 [NEXT]
 ## Step 2: Celerize it
 
-<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
-
-@app.task
-def deep_predict(prices, times, predict=10):
-
-    model = utils.get_rnn_model()
-
-    model.fit(time, prices, batch_size=512, nb_epoch=1, validation_split=0.05)
-
-    predict_times = get_prediction_timeline(times, predict)
-
-    return model.predict(predict_times)
-
-</code></pre>
-
-[NEXT]
-## Step 3: Make sure it works
-
 <pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
 from celery import Celery
 from utils import load, dump
 
+# Initialise celery with rabbitMQ address
 app = Celery('crypto_ml',
     backend='amqp://guest@localhost/',    
     broker='amqp://guest@localhost/')
 
+# Add decorator for task (can also be class)
 @app.task
 def deep_predict(d_prices, d_times, predict=10):
 
@@ -878,13 +863,12 @@ def deep_predict(d_prices, d_times, predict=10):
     predict_times = get_prediction_timeline(times, predict)
 
     return dump(model.predict(predict_times))
-
 </code></pre>
-
-Disclaimer: I haven't for this snippet
 
 [NEXT]
 ## Step 4: Run it!
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">from crypto_ml.models import deep_predict
 
 <pre><code class="code bash hljs" style="font-size: 0.8em; line-height: 1em; ">
 $ celery -A crypto_ml worker
@@ -893,7 +877,8 @@ $ celery -A crypto_ml worker
 
 See the activity logs:
 
-``` bash
+<pre><code class="code bash hljs" style="font-size: 0.8em; line-height: 1em; ">
+$ celery -A crypto_ml worker
 Darwin-15.6.0-x86_64-i386-64bit 2018-03-10 00:43:28
 
 [config]
@@ -906,7 +891,7 @@ Darwin-15.6.0-x86_64-i386-64bit 2018-03-10 00:43:28
 [queues]
 .> celery           exchange=celery(direct) key=celery
 
-```
+</code></pre>
 
 
 [NEXT]
@@ -944,34 +929,6 @@ for k,v in results.items():
 [NEXT]
 ## Step 2: Celerize it
 
-<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
-cl = CryptoLoader()
-results = {}
-
-# Send task for distributed computing
-for name in cl.get_crypto_names():
-
-    prices, times = cl.get_prices(name)
-
-    task = deep_predict.delay(
-                      dump(prices)
-                    , dump(times))
-
-    results[name] = task
-
-# Wait for results and print
-for k,v in results.items():
-    p_result = v.get()
-
-    result = load(p_result)
-
-    print(k, result)
-
-</code></pre>
-
-[NEXT]
-## Step 3: Make sure it works
-
 <pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">from crypto_ml.data_loader import CryptoLoader
 from util import load, dump
 
@@ -999,11 +956,9 @@ for k,v in results.items():
 
 </code></pre>
 
-Disclaimer: I haven't for this snippet
-
 
 [NEXT]
-## Step 4: Run it!
+## Step 3: Run it!
 
 By just running the Python in a shell command!
 
@@ -1039,7 +994,7 @@ Now we have to take full advantage of it!
 
 
 
-[NEXT]
+[NEXT SECTION]
 # 4. Elastic DevOps Infrastructure
 
 
@@ -1216,8 +1171,8 @@ the roller-coaster keeps going!
 
 
 
-[NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background smallest" -->
+[NEXT SECTION]
+<!-- .slide: data-background="images/network-background.jpg" class="background smallest" -->
 
 ### But for us?
 
@@ -1231,7 +1186,7 @@ the roller-coaster keeps going!
 
 
 [NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background" -->
+<!-- .slide: data-background="images/network-background.jpg" class="background" -->
 ### Code
 https://github.com/axsauze/crypto-ml
 
@@ -1239,7 +1194,7 @@ https://github.com/axsauze/crypto-ml
 http://github.com/axsauze/industrial-machine-learning
 
 [NEXT]
-<!-- .slide: data-background="images/books_opened.jpg" class="background" -->
+<!-- .slide: data-background="images/network-background.jpg" class="background" -->
 
 <h2>Industrial Machine Learning</h2>
 
