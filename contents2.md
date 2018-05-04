@@ -184,224 +184,7 @@ http://github.com/axsauze/industrial-machine-learning
 ## #LetsDoThis
 
 [NEXT SECTION]
-# 1. Machine Learning Intuition
-
-[NEXT]
-
-Crypto-ML Ltd. managed to appear in top tech magazines and raise VC money with their initial prototype.
-
-<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
-import random
-
-def predict_crypto(self, crypto_data):
-    # I have no clue what I'm doing
-    return crypto_data * random.uniform(0, 1)
-
-</code></pre>
-
-<br>
-
-### Now they need to figure out what ML is
-
-
-
-[NEXT]
-
-### ML Tutorials Everywhere
-
-![shapes](images/everywhere.jpg)
-
-[NEXT]
-Given some input data, predict the correct output
-
-![shapes](images/shapes.svg)
-
-Let's try to predict whether a shape is a square or a triangle
-
-### How do we do this?
-
-[NEXT]
-## Let's visualise it
-
-* Imagine a 2-d plot
-* The x-axis is the area of the input shape
-* The y-axis is the perimeter of the input shape
-
-![classification](images/classification-points.png)
-
-[NEXT]
-## All about the function
-
-<div class="left-col">
-**$f(x̄) = mx̄ + b$**, where:
-<br>
-<br>
-**x̄** is input (area & perimeter) </li>
-<br>
-<br>
-**m** and **b** are weights/bias
-<br>
-</div>
-
-<img width="40%" src="images/classification-line.png">
-
-The result **$f(x̄)$** states whether it's a triangle or square
-<br>
-<br>
-(i.e. if it's larger than 0.5 it's triangle otherwise square)
-
-[NEXT]
-### We let the machine do the learning
-
-![classification](images/feature-1.jpg)
-
-[NEXT]
-### We let the machine do the learning
-
-![classification](images/feature-2.jpg)
-
-[NEXT]
-### We let the machine do the learning
-
-![classification](images/feature-3.jpg)
-
-[NEXT]
-### Minimising loss function
-
-We optimise the model by **minimising its loss**.
-
-Keep adjusting the weights...
-
-...until loss is not getting any smaller.
-
-![gradient_descent](images/gradient_descent_cropped.gif)
-
-
-
-
-[NEXT]
-### Finding the weights!
-
-<img width="40%" src="images/classification-line.png">
-
-When it finishes, we find optimised weights and biases
-
-i.e. **$f(x̄)$ = triangle  if ($0.3 x̄ + 10$) > 0.5 else square**
-
-[NEXT]
-### Now predict new data
-
-![classification_small](images/classification-newinput.png)
-
-Once we have our function, we can predict NEW data!
-
-
-[NEXT]
-### We're ML experts!
-
-Please collect your certificates after the talk
-<br>
-<br>
-
-These are valid in:
-
-* Your Linkedin profile
-* Non-tech Meetups and Parties
-* Any time you reply to a tweet
-
-[NEXT]
-
-### In all seriousness...
-
-`f(x) = mx + b`  
-
-is the single perceptron function
-
-in a neural network
-<br>
-
-![perceptron](images/perceptron.svg)
-
-
-[NEXT]
-### Instead of just one neuron
-
-![rnn_diagram](images/rnn-perceptron.svg)
-
-[NEXT]
-### We just have many
-
-![rnn_diagram](images/rnn-feedforward.svg)
-
-This gives the function more flexibility
-
-
-[NEXT]
-### With a few layers
-
-![deep_rnn_diagram](images/rnn-feedforwardlayers.svg)
-
-This gives more flexibility for learning
-
-
-
-[NEXT]
-But what about with more complex cases?
-
-![perceptron_learning](images/perceptron_learning4.png)
-
-[NEXT]
-
-### Deep Neural Networks 
-
-![perceptron_learning](images/layer.jpg)
-
-[NEXT]
-### Deep Networks &mdash; many hidden layers
-
-![deep_rnn_diagram](images/rnn-deepfeedforward.svg)
-
-[NEXT]
-![perceptron_learning](images/perceptron_learning1.png)
-
-[NEXT]
-![perceptron_learning](images/perceptron_learning2.png)
-
-[NEXT]
-![perceptron_learning](images/perceptron_learning3.png)
-
-[NEXT]
-![perceptron_learning](images/perceptron_learning4.png)
-
-
-
-[NEXT SECTION]
-# 2. Machine Learning in Practice
-
-
-
-[NEXT]
-The real world has more varied and complex cases
-
-You need a pragmatic approach
-
-<div class="right-col">
-![perceptron_learning](images/perceptron_learning4.png)
-</div>
-
-<br>
-<div class="left-col">
-<ul>
-<li> Extending our feature space</li>
-<li> Increasing number of inputs</li>
-<li> Regularisation techniques (dropout, batch normalisation)</li>
-<li> Normalising datasets</li>
-</ul>
-
-</div>
-
-
-
+# 1. The Early Beginnings
 
 [NEXT]
 The Crypto-ML devs asked themselves...
@@ -427,23 +210,26 @@ We are now experts in ML, however...
 
 ...can this be used for our cryptocurrency price data?
 
-[NEXT]
-# Not yet.
 
-Processing sequential data requires a different approach.
-<br>
-<br>
-
-Instead of trying to predict two classes...
-
-...we want to predict future steps
-<br>
-<br>
-
-#### How do we do this?
 
 [NEXT]
 
+Crypto-ML Ltd. managed to appear in top tech magazines and raise VC money with their initial prototype.
+
+<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
+import random
+
+def predict_crypto(self, crypto_data):
+    # I have no clue what I'm doing
+    return crypto_data * random.uniform(0, 1)
+
+</code></pre>
+
+<br>
+
+### Now they need to figure out what ML is
+
+[NEXT]
 # Sequential Models
 
 Sequential models often are used to predict future data.
@@ -470,7 +256,7 @@ But can be used on time-sequence data - ie. prices, words, characters, etc.
 
 [NEXT]
 
-## The hello_world of ML
+## The hello_world of sequential models
 
 Predicting prices by fitting a line on set of time-series points
 
@@ -523,99 +309,55 @@ results = predict(prices, times, 5)
 ### But the Crypto-ML team wants 
 #cutting edge tech
 
+
+
+[NEXT]
+### With a few layers
+
+![deep_rnn_diagram](images/rnn-feedforwardlayers.svg)
+
+This gives more flexibility for learning
+
+[NEXT]
+The real world has more varied and complex cases
+
+You need a pragmatic approach
+
+<div class="right-col">
+![perceptron_learning](images/perceptron_learning4.png)
+</div>
+
+<br>
+<div class="left-col">
+<ul>
+<li> Extending our feature space</li>
+<li> Increasing number of inputs</li>
+<li> Regularisation techniques (dropout, batch normalisation)</li>
+<li> Normalising datasets</li>
+</ul>
+
+</div>
+
+[NEXT]
+
+### Deep Neural Networks 
+
+![perceptron_learning](images/layer.jpg)
+
+[NEXT]
+### Deep Networks &mdash; many hidden layers
+
+![deep_rnn_diagram](images/rnn-deepfeedforward.svg)
+
 [NEXT]
 
 # Deep Recurrent 
 # Neural Networks 
 
-[NEXT]
-
-### Deep Recurrent Neural Networks
-They are pretty much deep neural networks.
-<br>
-<br>
-
-But their use is to predict a future time-step...
-
-...instead of predicting a class.
-
-
-[NEXT]
-### Deep Recurrent Neural Networks
-
-Because of the layers and neurons:
-
-* They can hold more complex functions/models.
-
-* They can take more complex features.
-
-* They require more data
-
-[NEXT]
-### Let's recall deep neural nets
-
-![deep_rnn_diagram](images/rnn-deepfeedforward.svg)
-
-
-[NEXT]
-### Simplified Visualisation
-![rnn_compress_expanded](images/rnn-compress-expanded.svg)
-One node represents a full layer of neurons.
-
-[NEXT]
-### Simplified Visualisation
-
-![rnn_compressed](images/rnn-compress.svg)
-
-One node represents a full layer of neurons.
-
-
-[NEXT]
-### Unrolled Recurrent Network
-Previous predictions help make the _next_ prediction.
-
-Each prediction is a **time step**.
-
-![rnn_unrolled_chars](images/rnn-unrolled-chars1.svg)
-
-
-[NEXT]
-### Recurrent Networks
-
 ![rnn_compressed](images/rnn-loopcompressed.svg)
 
 Hidden layer's input includes the output of itself during the last run of the
 network.
-
-
-
-[NEXT]
-![rnn_unrolled_chars](images/rnn-unrolled-chars2.svg)
-
-[NEXT]
-![rnn_unrolled_chars](images/rnn-unrolled-chars3.svg)
-
-[NEXT]
-![rnn_unrolled_chars](images/rnn-unrolled-chars4.svg)
-
-[NEXT]
-![rnn_unrolled_chars](images/rnn-unrolled-chars5.svg)
-
-[NEXT]
-![rnn_unrolled_chars](images/rnn-unrolled-chars6.svg)
-
-[NEXT]
-![rnn_unrolled_chars](images/rnn-unrolled-chars7.svg)
-
-[NEXT]
-![rnn_unrolled_chars](images/rnn-unrolled-chars8.svg)
-
-[NEXT]
-
-### Loss/Cost function
-Cost function is based on getting the prediction right!
-
-![rnn_unrolled_chars](images/rnn-unrolled-chars9.svg)
 
 
 [NEXT]
@@ -695,35 +437,8 @@ def deep_predict(prices):
 
 </code></pre>
 
-
 [NEXT]
-### To build the LSTM
-
-<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
-from keras.layers.core import Dense, Activation, Dropout
-from keras.layers.recurrent import LSTM
-from keras.models import Sequential
-import lstm
-
-def get_rnn_model():
-    model = Sequential()
-    model.add(LSTM(input_dim=1, output_dim=50, return_sequences=True))
-    model.add(Dropout(0.2))
-
-    model.add(LSTM(100, return_sequences=False))
-    model.add(Dropout(0.2))
-
-</code></pre>
-
-In this case 50 recurrent layers that pass output to next layer...
-
-...and 100 that don't pass output until end of sequence
-
-(+ regulatisation)
-
-
-[NEXT]
-### Finishing the model
+### Code to build the the LSTM
 
 <pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
 from keras.layers.core import Dense, Activation, Dropout
@@ -799,7 +514,7 @@ The fun is just starting
 
 [NEXT SECTION]
 
-# 3. Distributed Architecture
+# 2. Going distributed 
 
 [NEXT]
 
@@ -825,10 +540,10 @@ They tried getting larger and larger AWS servers
 * I'm talking VERY heavy - holding whole models in-mem
 * Scaling to bigger instances with more cores is expensive
 * Having everything in one node is a central point of failure
-* Data pipelines can get quite complex 
-
 <br>
-### It's time to go distributed
+<br>
+
+### It's time to go for scale
 
 [NEXT]
 ### Producer-consumer Architecture
@@ -896,16 +611,16 @@ def deep_predict(d_prices, d_times, predict=10):
 </code></pre>
 
 [NEXT]
-## Step 4: Run it!
+## Step 3: Run it!
 
-<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">from crypto_ml.models import deep_predict
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">from crypto_ml.models import deep_predict</code></pre>
 
 <pre><code class="code bash hljs" style="font-size: 0.8em; line-height: 1em; ">
 $ celery -A crypto_ml worker
 
 </code></pre>
 
-See the activity logs:
+Monitor the activity logs:
 
 <pre><code class="code bash hljs" style="font-size: 0.8em; line-height: 1em; ">
 $ celery -A crypto_ml worker
@@ -1017,12 +732,82 @@ We now have ML, and are distributed.
 
 We have surely won.
 
+We can pack our ba- oh, not yet?
+
 ### Not really 
 
-Having a horizontal architecture is just the first step...
+[NEXT SECTION]
 
-Now we have to take full advantage of it!
+# 4. Smart Data Pipelines
 
+[NEXT]
+## Growingly complex data flows
+
+* There is a growing need to pull data from different sources
+* There is a growing need to pre- and post-process data
+* As complexity increases tasks might be depending on others
+* If a task fails we wouldn't want to run the children tasks
+* Some tasks need to be triggered chronologically
+* Data pipelines can get quite complex 
+* Having just celerized tasks ran by Linux chronjob gets messy
+<br>
+<br>
+
+[NEXT]
+# You want to go from here
+
+(Picture of sad programmer debugging data pipelines)
+
+[NEXT]
+# To here
+
+(Picture of happy programmer using Airflow)
+
+
+[NEXT]
+# Introducing Airflow
+
+The swiss army knife of data pipelines
+
+[NEXT]
+# What Airflow IS
+
+* Built by AirBnb
+* Solution to Chronos (also built by AirBnb) + Luigi
+* Has a scheduler (like chronjob)
+* Can define tasks and dependent tasks (as a pipeline)
+* Has real-time visualisation of jobs
+* Modular separation between framework and business logic
+* Can run on top of celery (without any modifications)
+* Being introduced to the apache family (incubation)
+* Actively maintained and growing community
+* Used by tons of companies (AirBnB, Paypal, Qubole, Quora, etc)
+
+[NEXT]
+# What Airflow is NOT
+
+* Airflow is not perfect (but the best out there)
+* It's not a Lambda/FaaS framework (but can be programmed)
+* Is not extremely mature (ie incubation)
+* Airflow is not a data streaming solution (e.g. Storm/Spark Streaming)
+
+[NEXT]
+# The principles
+
+* Dynamic: Airflow pipelines are configuration as code (Python), 
+allowing for dynamic pipeline generation. 
+* Extensible: Easily define your own operators, executors and extend the library
+* Elegant: Airflow pipelines are lean and explicit.
+* Scalable: Airflow has a modular architecture and uses message queue to orchestrate
+
+[NEXT]
+# The DAG Architecture
+
+The core of Airflow is its concept of Directed Acyclic Graphs (DAGs).
+
+(Picture of DAGs)
+
+Each of the dags con
 
 
 [NEXT SECTION]
