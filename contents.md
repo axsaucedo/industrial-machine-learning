@@ -183,7 +183,7 @@ http://github.com/axsauze/industrial-machine-learning
 [NEXT]
 ## #LetsDoThis
 
-[NEXT SECTION]
+[NEXT]
 # 1. The Early Crypto-Beginnings
 
 [NEXT]
@@ -431,7 +431,7 @@ results = predict(prices, times, 5)
 #cutting edge tech
 
 
-[NEXT SECTION]
+[NEXT]
 # 2. Diving deep into the hype
 
 [NEXT]
@@ -713,7 +713,7 @@ Are we done then?
 The fun is just starting
 
 
-[NEXT SECTION]
+[NEXT]
 
 # 3. Going distributed 
 
@@ -937,7 +937,7 @@ We can pack our ba- oh, not yet?
 
 ### Not really 
 
-[NEXT SECTION]
+[NEXT]
 
 # 4. Smart Data Pipelines
 
@@ -1043,7 +1043,7 @@ Sub-DAG:
 
 
 
-[NEXT SECTION]
+[NEXT]
 # 5. Elastic DevOps Infrastructure
 
 
@@ -1220,7 +1220,7 @@ the roller-coaster keeps going!
 
 
 
-[NEXT SECTION]
+[NEXT]
 <!-- .slide: data-background="images/network-background.jpg" class="background smallest" -->
 
 ### But for us?
