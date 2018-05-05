@@ -57,6 +57,7 @@
   </tr>
 </table>
 
+### <a style="color: cyan" href="#">Contact me at: a@e-x.io</a>
     
 [NEXT]
 <!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
@@ -977,6 +978,7 @@ The swiss army knife of data pipelines
 [NEXT]
 # What Airflow IS
 
+* Written in Python!
 * Alternative to Chronos (also built by AirBnb) + Luigi
 * Has a scheduler (like chronjob, but not like cronjob)
 * Can define tasks and dependent tasks (as a pipeline)
@@ -985,7 +987,7 @@ The swiss army knife of data pipelines
 * Can run on top of celery (without any modifications)
 * Being introduced to the apache family (incubation)
 * Actively maintained and growing community
-* Used by tons of companies (AirBnB, Paypal, Qubole, Quora, etc)
+* Used by tons of companies (AirBnB, Paypal, Quora,)
 
 [NEXT]
 # What Airflow is NOT
@@ -1283,7 +1285,7 @@ http://github.com/axsauze/industrial-machine-learning
   </tr>
 </table>
 
-### <a style="color: cyan" href="#">Join me at #PyDays18</a>
+### <a style="color: cyan" href="#">Contact me at: a@e-x.io</a>
 
 
 
