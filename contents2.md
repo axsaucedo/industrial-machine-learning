@@ -33,22 +33,22 @@
         <br>
         Head of Deployed Engineering
         <br>
-        <a style="color: cyan" href="#">Eigen Technologies</a>
-        <br>
-        <br>
-        Chief Technology Officer
-        <br>
-        <a style="color: cyan" href="#">Exponential</a>
+        <a style="color: cyan" href="http://eigentech.com">Eigen Technologies</a>
         <br>
         <br>
         Chairman
         <br>
-        <a style="color: cyan" href="#">The Institute for Ethical AI & ML</a>
+        <a style="color: cyan" href="http://ethical.institute">The Institute for Ethical AI & ML</a>
         <br>
         <br>
         Fellow (AI, Data & ML)
         <br>
         <a style="color: cyan" href="#">The RSA</a>
+        <br>
+        <br>
+        Advisor
+        <br>
+        <a style="color: cyan" href="http://teensinai.com">TeensInAI.com Initiative</a>
         <br>
 
     </td>
@@ -63,14 +63,14 @@
 
 # Industry-ready ML
 
-> An intuitive overview on general ML
+> An overview of caveats in deploying ML
 > <br>
 > <br>
-> A set of simple ML and heavier DL models
+> Very high level talk
 >
-> A distributed ML architecture
->
-> An elastically scalable setup
+> Intuitive overview of ML
+> 
+> Going distributed, and beyond
 
 ### The big picture
 
@@ -96,8 +96,7 @@
 >
 > Supporting <font style="color: cyan">heavy compute/memory ML</font>
 >
-> Can our system survive the <font style="color: cyan">crypto-craze?</font>
-
+> Can our system survive the 2017 <font style="color: cyan">crypto-craze?</font>
 
 [NEXT]
 <!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
@@ -184,7 +183,134 @@ http://github.com/axsauze/industrial-machine-learning
 ## #LetsDoThis
 
 [NEXT SECTION]
-# 1. The Early Beginnings
+# 1. The Early Crypto-Beginnings
+
+[NEXT]
+
+Crypto-ML Ltd. managed to obtain access to a unique dataset, which allowed them
+
+to built their initial prototype and raise massive amounts of VC money
+
+<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
+import random
+
+def predict_crypto(self, crypto_data):
+    # I have no clue what I'm doing
+    return crypto_data * random.uniform(0, 1)
+
+</code></pre>
+
+<br>
+
+### Now they need to figure out what ML is
+
+[NEXT]
+
+### ML Tutorials Everywhere
+
+![shapes](images/everywhere.jpg)
+
+
+[NEXT]
+Given some input data, predict the correct output
+
+![shapes](images/shapes.svg)
+
+Let's try to predict whether a shape is a square or a triangle
+
+### How do we do this?
+
+
+[NEXT]
+## Let's visualise it
+
+* Imagine a 2-d plot
+* The x-axis is the area of the input shape
+* The y-axis is the perimeter of the input shape
+
+![classification](images/classification-points.png)
+
+[NEXT]
+## All about the function
+
+<div class="left-col">
+**$f(x̄) = mx̄ + b$**, where:
+<br>
+<br>
+**x̄** is input (area & perimeter) </li>
+<br>
+<br>
+**m** and **b** are weights/bias
+<br>
+</div>
+
+<img width="40%" src="images/classification-line.png">
+
+The result **$f(x̄)$** states whether it's a triangle or square
+<br>
+<br>
+(i.e. if it's larger than 0.5 it's triangle otherwise square)
+
+
+[NEXT]
+### We let the machine do the learning
+
+![classification](images/feature-1.jpg)
+
+[NEXT]
+### We let the machine do the learning
+
+![classification](images/feature-2.jpg)
+
+[NEXT]
+### We let the machine do the learning
+
+![classification](images/feature-3.jpg)
+
+
+[NEXT]
+### Minimising loss function
+
+We optimise the model by **minimising its loss**.
+
+Keep adjusting the weights...
+
+...until loss is not getting any smaller.
+
+![gradient_descent](images/gradient_descent_cropped.gif)
+
+
+[NEXT]
+### Finding the weights!
+
+<img width="40%" src="images/classification-line.png">
+
+When it finishes, we find optimised weights and biases
+
+i.e. **$f(x̄)$ = triangle  if ($0.3 x̄ + 10$) > 0.5 else square**
+
+[NEXT]
+### Now predict new data
+
+![classification_small](images/classification-newinput.png)
+
+Once we have our function, we can predict NEW data!
+
+
+[NEXT]
+### We're ML experts!
+
+Please collect your certificates after the talk
+<br>
+<br>
+
+These are valid in:
+
+* Your Linkedin profile
+* Non-tech Meetups and Parties
+* Any time you reply to a tweet
+
+
 
 [NEXT]
 The Crypto-ML devs asked themselves...
@@ -206,28 +332,22 @@ btc.head()
 
 </code></pre>
 
-We are now experts in ML, however...
-
 ...can this be used for our cryptocurrency price data?
 
 
-
 [NEXT]
+# Not yet.
 
-Crypto-ML Ltd. managed to appear in top tech magazines and raise VC money with their initial prototype.
-
-<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
-import random
-
-def predict_crypto(self, crypto_data):
-    # I have no clue what I'm doing
-    return crypto_data * random.uniform(0, 1)
-
-</code></pre>
-
+Processing sequential data requires a different approach.
+<br>
 <br>
 
-### Now they need to figure out what ML is
+Instead of trying to predict two classes...
+
+...we want to predict future steps
+<br>
+<br>
+
 
 [NEXT]
 # Sequential Models
@@ -310,18 +430,16 @@ results = predict(prices, times, 5)
 #cutting edge tech
 
 
+[NEXT SECTION]
+# 2. Diving deep into the hype
 
 [NEXT]
-### With a few layers
+The Crypto-ML team realised that their usecases were much more complex
 
-![deep_rnn_diagram](images/rnn-feedforwardlayers.svg)
-
-This gives more flexibility for learning
+![perceptron_learning](images/perceptron_learning4.png)
 
 [NEXT]
-The real world has more varied and complex cases
-
-You need a pragmatic approach
+The team had to learn many critical points on machine learning development!
 
 <div class="right-col">
 ![perceptron_learning](images/perceptron_learning4.png)
@@ -338,6 +456,47 @@ You need a pragmatic approach
 
 </div>
 
+
+[NEXT]
+But they also stumbled upon some neural network tutorials...
+
+
+[NEXT]
+
+### Remember our favourite function?
+
+`f(x) = mx + b`
+
+Now on a simple perceptron function
+
+in a neural network
+<br>
+
+![perceptron](images/perceptron.svg)
+
+
+
+[NEXT]
+### Instead of just one neuron
+
+![rnn_diagram](images/rnn-perceptron.svg)
+
+[NEXT]
+### We just have many
+
+![rnn_diagram](images/rnn-feedforward.svg)
+
+This gives the function more flexibility
+
+
+
+[NEXT]
+### With a few layers
+
+![deep_rnn_diagram](images/rnn-feedforwardlayers.svg)
+
+This gives more flexibility for learning
+
 [NEXT]
 
 ### Deep Neural Networks 
@@ -351,8 +510,36 @@ You need a pragmatic approach
 
 [NEXT]
 
-# Deep Recurrent 
-# Neural Networks 
+For sequential models?
+## Deep Recurrent Neural Networks
+# (e.g. LSTMs)
+
+
+[NEXT]
+### Simplified Visualisation
+![rnn_compress_expanded](images/rnn-compress-expanded.svg)
+One node represents a full layer of neurons.
+
+[NEXT]
+### Simplified Visualisation
+
+![rnn_compressed](images/rnn-compress.svg)
+
+One node represents a full layer of neurons.
+
+
+[NEXT]
+### Unrolled Recurrent Network
+Previous predictions help make the _next_ prediction.
+
+Each prediction is a **time step**.
+
+![rnn_unrolled_chars](images/rnn-unrolled-chars1.svg)
+
+
+
+[NEXT]
+### Recurrent Networks
 
 ![rnn_compressed](images/rnn-loopcompressed.svg)
 
@@ -360,22 +547,35 @@ Hidden layer's input includes the output of itself during the last run of the
 network.
 
 
+
 [NEXT]
-### Deep learning framework
+![rnn_unrolled_chars](images/rnn-unrolled-chars2.svg)
 
-We are building this example with Keras
+[NEXT]
+![rnn_unrolled_chars](images/rnn-unrolled-chars3.svg)
 
-![icon_keras](images/keras_icon.svg)
+[NEXT]
+![rnn_unrolled_chars](images/rnn-unrolled-chars4.svg)
 
-<br>
+[NEXT]
+![rnn_unrolled_chars](images/rnn-unrolled-chars5.svg)
 
-#### There are many others to choose from
+[NEXT]
+![rnn_unrolled_chars](images/rnn-unrolled-chars6.svg)
 
-![icon_tensorflow](images/tensorflow_icon.svg)
-![icon_caffe](images/caffe_icon.svg)
+[NEXT]
+![rnn_unrolled_chars](images/rnn-unrolled-chars7.svg)
 
-![icon_pytorch](images/pytorch_icon.svg)
-![icon_theano](images/theano_icon.svg)
+[NEXT]
+![rnn_unrolled_chars](images/rnn-unrolled-chars8.svg)
+
+[NEXT]
+
+### Loss/Cost function
+Cost function is based on getting the prediction right!
+
+![rnn_unrolled_chars](images/rnn-unrolled-chars9.svg)
+
 
 [NEXT]
 ### Training an RNN in Python
@@ -514,7 +714,7 @@ The fun is just starting
 
 [NEXT SECTION]
 
-# 2. Going distributed 
+# 3. Going distributed 
 
 [NEXT]
 
@@ -741,11 +941,16 @@ We can pack our ba- oh, not yet?
 # 4. Smart Data Pipelines
 
 [NEXT]
+### The Crypto-ML has now an exponentially increasing amount of internal use-cases
+
+Their datapipeline is getting unmanagable!
+
+[NEXT]
 ## Growingly complex data flows
 
 * There is a growing need to pull data from different sources
 * There is a growing need to pre- and post-process data
-* As complexity increases tasks might be depending on others
+* As complexity increases tasks depending on others
 * If a task fails we wouldn't want to run the children tasks
 * Some tasks need to be triggered chronologically
 * Data pipelines can get quite complex 
@@ -756,12 +961,12 @@ We can pack our ba- oh, not yet?
 [NEXT]
 # You want to go from here
 
-(Picture of sad programmer debugging data pipelines)
+![cron_tab](images/crontab.jpg)
 
 [NEXT]
 # To here
 
-(Picture of happy programmer using Airflow)
+![airflow](images/airflow.png)
 
 
 [NEXT]
@@ -772,12 +977,11 @@ The swiss army knife of data pipelines
 [NEXT]
 # What Airflow IS
 
-* Built by AirBnb
-* Solution to Chronos (also built by AirBnb) + Luigi
-* Has a scheduler (like chronjob)
+* Alternative to Chronos (also built by AirBnb) + Luigi
+* Has a scheduler (like chronjob, but not like cronjob)
 * Can define tasks and dependent tasks (as a pipeline)
 * Has real-time visualisation of jobs
-* Modular separation between framework and business logic
+* Modular separation between framework and logic
 * Can run on top of celery (without any modifications)
 * Being introduced to the apache family (incubation)
 * Actively maintained and growing community
@@ -792,26 +996,53 @@ The swiss army knife of data pipelines
 * Airflow is not a data streaming solution (e.g. Storm/Spark Streaming)
 
 [NEXT]
-# The principles
-
-* Dynamic: Airflow pipelines are configuration as code (Python), 
-allowing for dynamic pipeline generation. 
-* Extensible: Easily define your own operators, executors and extend the library
-* Elegant: Airflow pipelines are lean and explicit.
-* Scalable: Airflow has a modular architecture and uses message queue to orchestrate
-
-[NEXT]
 # The DAG Architecture
 
-The core of Airflow is its concept of Directed Acyclic Graphs (DAGs).
+![cron_tab](images/graphview.png)
 
-(Picture of DAGs)
 
-Each of the dags con
+[NEXT]
+# The scheduler
+
+![cron_tab](images/scheduler.png)
+
+
+[NEXT]
+# The tree view (and sub-components)
+
+![cron_tab](images/treeview.png)
+
+[NEXT]
+## The Crypto-ML Usecase
+
+Scheduled task:
+* Operator: polls new Crypto-data + triggers each sub-dags
+
+Sub-DAG:
+* Operator: Transforms the data
+* Operator: Sends data to the crypto-prediction engine
+* Sensor: Polls until the prediction is finished
+* Branch: Modifies data & based on rules triggers action
+    * Operator: Stores data in database
+    * Operator: Sends request to trade
+
+
+[NEXT]
+## The Crypto-ML Usecase
+
+![cron_tab](images/cryptodag.png)
+
+
+
+[NEXT]
+# Go check it out!
+
+## [airflow.apache.org](https://airflow.apache.org/)
+
 
 
 [NEXT SECTION]
-# 4. Elastic DevOps Infrastructure
+# 5. Elastic DevOps Infrastructure
 
 
 [NEXT]
@@ -1028,22 +1259,22 @@ http://github.com/axsauze/industrial-machine-learning
         <br>
         Head of Deployed Engineering
         <br>
-        <a style="color: cyan" href="#">Eigen Technologies</a>
-        <br>
-        <br>
-        Chief Technology Officer
-        <br>
-        <a style="color: cyan" href="#">Exponential</a>
+        <a style="color: cyan" href="http://eigentech.com">Eigen Technologies</a>
         <br>
         <br>
         Chairman
         <br>
-        <a style="color: cyan" href="#">The Institute for Ethical AI & ML</a>
+        <a style="color: cyan" href="http://ethical.institute">The Institute for Ethical AI & ML</a>
         <br>
         <br>
         Fellow (AI, Data & ML)
         <br>
         <a style="color: cyan" href="#">The RSA</a>
+        <br>
+        <br>
+        Advisor
+        <br>
+        <a style="color: cyan" href="http://teensinai.com">TeensInAI.com initiative</a>
         <br>
 
     </td>
