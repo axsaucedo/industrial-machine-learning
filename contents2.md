@@ -33,22 +33,22 @@
         <br>
         Head of Deployed Engineering
         <br>
-        <a style="color: cyan" href="http://eigentech.com">Eigen Technologies</a>
+        <a style="color: cyan" href="#">Eigen Technologies</a>
+        <br>
+        <br>
+        Chief Technology Officer
+        <br>
+        <a style="color: cyan" href="#">Exponential</a>
         <br>
         <br>
         Chairman
         <br>
-        <a style="color: cyan" href="http://ethical.institute">The Institute for Ethical AI & ML</a>
+        <a style="color: cyan" href="#">The Institute for Ethical AI & ML</a>
         <br>
         <br>
         Fellow (AI, Data & ML)
         <br>
         <a style="color: cyan" href="#">The RSA</a>
-        <br>
-        <br>
-        Advisor
-        <br>
-        <a style="color: cyan" href="http://teensinai.com">TeensInAI.com Initiative</a>
         <br>
 
     </td>
@@ -57,21 +57,20 @@
   </tr>
 </table>
 
-### <a style="color: cyan" href="#">Contact me at: a@e-x.io</a>
     
 [NEXT]
 <!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
 
 # Industry-ready ML
 
-> An overview of caveats in deploying ML
+> An intuitive overview on general ML
 > <br>
 > <br>
-> Very high level talk
+> A set of simple ML and heavier DL models
 >
-> Intuitive overview of ML
-> 
-> Going distributed, and beyond
+> A distributed ML architecture
+>
+> An elastically scalable setup
 
 ### The big picture
 
@@ -97,7 +96,8 @@
 >
 > Supporting <font style="color: cyan">heavy compute/memory ML</font>
 >
-> Can our system survive the 2017 <font style="color: cyan">crypto-craze?</font>
+> Can our system survive the <font style="color: cyan">crypto-craze?</font>
+
 
 [NEXT]
 <!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
@@ -184,13 +184,11 @@ http://github.com/axsauze/industrial-machine-learning
 ## #LetsDoThis
 
 [NEXT SECTION]
-# 1. The Early Crypto-Beginnings
+# 1. Machine Learning Intuition
 
 [NEXT]
 
-Crypto-ML Ltd. managed to obtain access to a unique dataset, which allowed them
-
-to built their initial prototype and raise massive amounts of VC money
+Crypto-ML Ltd. managed to appear in top tech magazines and raise VC money with their initial prototype.
 
 <pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
 import random
@@ -205,12 +203,13 @@ def predict_crypto(self, crypto_data):
 
 ### Now they need to figure out what ML is
 
+
+
 [NEXT]
 
 ### ML Tutorials Everywhere
 
 ![shapes](images/everywhere.jpg)
-
 
 [NEXT]
 Given some input data, predict the correct output
@@ -220,7 +219,6 @@ Given some input data, predict the correct output
 Let's try to predict whether a shape is a square or a triangle
 
 ### How do we do this?
-
 
 [NEXT]
 ## Let's visualise it
@@ -252,7 +250,6 @@ The result **$f(x̄)$** states whether it's a triangle or square
 <br>
 (i.e. if it's larger than 0.5 it's triangle otherwise square)
 
-
 [NEXT]
 ### We let the machine do the learning
 
@@ -268,7 +265,6 @@ The result **$f(x̄)$** states whether it's a triangle or square
 
 ![classification](images/feature-3.jpg)
 
-
 [NEXT]
 ### Minimising loss function
 
@@ -279,6 +275,8 @@ Keep adjusting the weights...
 ...until loss is not getting any smaller.
 
 ![gradient_descent](images/gradient_descent_cropped.gif)
+
+
 
 
 [NEXT]
@@ -311,6 +309,98 @@ These are valid in:
 * Non-tech Meetups and Parties
 * Any time you reply to a tweet
 
+[NEXT]
+
+### In all seriousness...
+
+`f(x) = mx + b`  
+
+is the single perceptron function
+
+in a neural network
+<br>
+
+![perceptron](images/perceptron.svg)
+
+
+[NEXT]
+### Instead of just one neuron
+
+![rnn_diagram](images/rnn-perceptron.svg)
+
+[NEXT]
+### We just have many
+
+![rnn_diagram](images/rnn-feedforward.svg)
+
+This gives the function more flexibility
+
+
+[NEXT]
+### With a few layers
+
+![deep_rnn_diagram](images/rnn-feedforwardlayers.svg)
+
+This gives more flexibility for learning
+
+
+
+[NEXT]
+But what about with more complex cases?
+
+![perceptron_learning](images/perceptron_learning4.png)
+
+[NEXT]
+
+### Deep Neural Networks 
+
+![perceptron_learning](images/layer.jpg)
+
+[NEXT]
+### Deep Networks &mdash; many hidden layers
+
+![deep_rnn_diagram](images/rnn-deepfeedforward.svg)
+
+[NEXT]
+![perceptron_learning](images/perceptron_learning1.png)
+
+[NEXT]
+![perceptron_learning](images/perceptron_learning2.png)
+
+[NEXT]
+![perceptron_learning](images/perceptron_learning3.png)
+
+[NEXT]
+![perceptron_learning](images/perceptron_learning4.png)
+
+
+
+[NEXT SECTION]
+# 2. Machine Learning in Practice
+
+
+
+[NEXT]
+The real world has more varied and complex cases
+
+You need a pragmatic approach
+
+<div class="right-col">
+![perceptron_learning](images/perceptron_learning4.png)
+</div>
+
+<br>
+<div class="left-col">
+<ul>
+<li> Extending our feature space</li>
+<li> Increasing number of inputs</li>
+<li> Regularisation techniques (dropout, batch normalisation)</li>
+<li> Normalising datasets</li>
+</ul>
+
+</div>
+
+
 
 
 [NEXT]
@@ -333,8 +423,9 @@ btc.head()
 
 </code></pre>
 
-...can this be used for our cryptocurrency price data?
+We are now experts in ML, however...
 
+...can this be used for our cryptocurrency price data?
 
 [NEXT]
 # Not yet.
@@ -349,8 +440,10 @@ Instead of trying to predict two classes...
 <br>
 <br>
 
+#### How do we do this?
 
 [NEXT]
+
 # Sequential Models
 
 Sequential models often are used to predict future data.
@@ -377,7 +470,7 @@ But can be used on time-sequence data - ie. prices, words, characters, etc.
 
 [NEXT]
 
-## The hello_world of sequential models
+## The hello_world of ML
 
 Predicting prices by fitting a line on set of time-series points
 
@@ -430,90 +523,38 @@ results = predict(prices, times, 5)
 ### But the Crypto-ML team wants 
 #cutting edge tech
 
+[NEXT]
 
-[NEXT SECTION]
-# 2. Diving deep into the hype
+# Deep Recurrent 
+# Neural Networks 
 
 [NEXT]
-The Crypto-ML team realised that their usecases were much more complex
 
-![perceptron_learning](images/perceptron_learning4.png)
-
-[NEXT]
-The team had to learn many critical points on machine learning development!
-
-<div class="right-col">
-![perceptron_learning](images/perceptron_learning4.png)
-</div>
-
+### Deep Recurrent Neural Networks
+They are pretty much deep neural networks.
 <br>
-<div class="left-col">
-<ul>
-<li> Extending our feature space</li>
-<li> Increasing number of inputs</li>
-<li> Regularisation techniques (dropout, batch normalisation)</li>
-<li> Normalising datasets</li>
-</ul>
-
-</div>
-
-
-[NEXT]
-But they also stumbled upon some neural network tutorials...
-
-
-[NEXT]
-
-### Remember our favourite function?
-
-`f(x) = mx + b`
-
-Now on a simple perceptron function
-
-in a neural network
 <br>
 
-![perceptron](images/perceptron.svg)
+But their use is to predict a future time-step...
 
-
-
-[NEXT]
-### Instead of just one neuron
-
-![rnn_diagram](images/rnn-perceptron.svg)
-
-[NEXT]
-### We just have many
-
-![rnn_diagram](images/rnn-feedforward.svg)
-
-This gives the function more flexibility
-
+...instead of predicting a class.
 
 
 [NEXT]
-### With a few layers
+### Deep Recurrent Neural Networks
 
-![deep_rnn_diagram](images/rnn-feedforwardlayers.svg)
+Because of the layers and neurons:
 
-This gives more flexibility for learning
+* They can hold more complex functions/models.
 
-[NEXT]
+* They can take more complex features.
 
-### Deep Neural Networks 
-
-![perceptron_learning](images/layer.jpg)
+* They require more data
 
 [NEXT]
-### Deep Networks &mdash; many hidden layers
+### Let's recall deep neural nets
 
 ![deep_rnn_diagram](images/rnn-deepfeedforward.svg)
-
-[NEXT]
-
-For sequential models?
-## Deep Recurrent Neural Networks
-# (e.g. LSTMs)
 
 
 [NEXT]
@@ -536,7 +577,6 @@ Previous predictions help make the _next_ prediction.
 Each prediction is a **time step**.
 
 ![rnn_unrolled_chars](images/rnn-unrolled-chars1.svg)
-
 
 
 [NEXT]
@@ -577,6 +617,23 @@ Cost function is based on getting the prediction right!
 
 ![rnn_unrolled_chars](images/rnn-unrolled-chars9.svg)
 
+
+[NEXT]
+### Deep learning framework
+
+We are building this example with Keras
+
+![icon_keras](images/keras_icon.svg)
+
+<br>
+
+#### There are many others to choose from
+
+![icon_tensorflow](images/tensorflow_icon.svg)
+![icon_caffe](images/caffe_icon.svg)
+
+![icon_pytorch](images/pytorch_icon.svg)
+![icon_theano](images/theano_icon.svg)
 
 [NEXT]
 ### Training an RNN in Python
@@ -638,8 +695,35 @@ def deep_predict(prices):
 
 </code></pre>
 
+
 [NEXT]
-### Code to build the the LSTM
+### To build the LSTM
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+from keras.layers.core import Dense, Activation, Dropout
+from keras.layers.recurrent import LSTM
+from keras.models import Sequential
+import lstm
+
+def get_rnn_model():
+    model = Sequential()
+    model.add(LSTM(input_dim=1, output_dim=50, return_sequences=True))
+    model.add(Dropout(0.2))
+
+    model.add(LSTM(100, return_sequences=False))
+    model.add(Dropout(0.2))
+
+</code></pre>
+
+In this case 50 recurrent layers that pass output to next layer...
+
+...and 100 that don't pass output until end of sequence
+
+(+ regulatisation)
+
+
+[NEXT]
+### Finishing the model
 
 <pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
 from keras.layers.core import Dense, Activation, Dropout
@@ -715,7 +799,7 @@ The fun is just starting
 
 [NEXT SECTION]
 
-# 3. Going distributed 
+# 3. Distributed Architecture
 
 [NEXT]
 
@@ -741,10 +825,10 @@ They tried getting larger and larger AWS servers
 * I'm talking VERY heavy - holding whole models in-mem
 * Scaling to bigger instances with more cores is expensive
 * Having everything in one node is a central point of failure
-<br>
-<br>
+* Data pipelines can get quite complex 
 
-### It's time to go for scale
+<br>
+### It's time to go distributed
 
 [NEXT]
 ### Producer-consumer Architecture
@@ -812,16 +896,16 @@ def deep_predict(d_prices, d_times, predict=10):
 </code></pre>
 
 [NEXT]
-## Step 3: Run it!
+## Step 4: Run it!
 
-<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">from crypto_ml.models import deep_predict</code></pre>
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">from crypto_ml.models import deep_predict
 
 <pre><code class="code bash hljs" style="font-size: 0.8em; line-height: 1em; ">
 $ celery -A crypto_ml worker
 
 </code></pre>
 
-Monitor the activity logs:
+See the activity logs:
 
 <pre><code class="code bash hljs" style="font-size: 0.8em; line-height: 1em; ">
 $ celery -A crypto_ml worker
@@ -933,118 +1017,16 @@ We now have ML, and are distributed.
 
 We have surely won.
 
-We can pack our ba- oh, not yet?
-
 ### Not really 
 
-[NEXT SECTION]
+Having a horizontal architecture is just the first step...
 
-# 4. Smart Data Pipelines
-
-[NEXT]
-### The Crypto-ML has now an exponentially increasing amount of internal use-cases
-
-Their datapipeline is getting unmanagable!
-
-[NEXT]
-## Growingly complex data flows
-
-* There is a growing need to pull data from different sources
-* There is a growing need to pre- and post-process data
-* As complexity increases tasks depending on others
-* If a task fails we wouldn't want to run the children tasks
-* Some tasks need to be triggered chronologically
-* Data pipelines can get quite complex 
-* Having just celerized tasks ran by Linux chronjob gets messy
-<br>
-<br>
-
-[NEXT]
-# You want to go from here
-
-![cron_tab](images/crontab.jpg)
-
-[NEXT]
-# To here
-
-![airflow](images/airflow.png)
-
-
-[NEXT]
-# Introducing Airflow
-
-The swiss army knife of data pipelines
-
-[NEXT]
-# What Airflow IS
-
-* Written in Python!
-* Alternative to Chronos (also built by AirBnb) + Luigi
-* Has a scheduler (like chronjob, but not like cronjob)
-* Can define tasks and dependent tasks (as a pipeline)
-* Has real-time visualisation of jobs
-* Modular separation between framework and logic
-* Can run on top of celery (without any modifications)
-* Being introduced to the apache family (incubation)
-* Actively maintained and growing community
-* Used by tons of companies (AirBnB, Paypal, Quora,)
-
-[NEXT]
-# What Airflow is NOT
-
-* Airflow is not perfect (but the best out there)
-* It's not a Lambda/FaaS framework (but can be programmed)
-* Is not extremely mature (ie incubation)
-* Airflow is not a data streaming solution (e.g. Storm/Spark Streaming)
-
-[NEXT]
-# The DAG Architecture
-
-![cron_tab](images/graphview.png)
-
-
-[NEXT]
-# The scheduler
-
-![cron_tab](images/scheduler.png)
-
-
-[NEXT]
-# The tree view (and sub-components)
-
-![cron_tab](images/treeview.png)
-
-[NEXT]
-## The Crypto-ML Usecase
-
-Scheduled task:
-* Operator: polls new Crypto-data + triggers each sub-dags
-
-Sub-DAG:
-* Operator: Transforms the data
-* Operator: Sends data to the crypto-prediction engine
-* Sensor: Polls until the prediction is finished
-* Branch: Modifies data & based on rules triggers action
-    * Operator: Stores data in database
-    * Operator: Sends request to trade
-
-
-[NEXT]
-## The Crypto-ML Usecase
-
-![cron_tab](images/cryptodag.png)
-
-
-
-[NEXT]
-# Go check it out!
-
-## [airflow.apache.org](https://airflow.apache.org/)
+Now we have to take full advantage of it!
 
 
 
 [NEXT SECTION]
-# 5. Elastic DevOps Infrastructure
+# 4. Elastic DevOps Infrastructure
 
 
 [NEXT]
@@ -1261,22 +1243,22 @@ http://github.com/axsauze/industrial-machine-learning
         <br>
         Head of Deployed Engineering
         <br>
-        <a style="color: cyan" href="http://eigentech.com">Eigen Technologies</a>
+        <a style="color: cyan" href="#">Eigen Technologies</a>
+        <br>
+        <br>
+        Chief Technology Officer
+        <br>
+        <a style="color: cyan" href="#">Exponential</a>
         <br>
         <br>
         Chairman
         <br>
-        <a style="color: cyan" href="http://ethical.institute">The Institute for Ethical AI & ML</a>
+        <a style="color: cyan" href="#">The Institute for Ethical AI & ML</a>
         <br>
         <br>
         Fellow (AI, Data & ML)
         <br>
         <a style="color: cyan" href="#">The RSA</a>
-        <br>
-        <br>
-        Advisor
-        <br>
-        <a style="color: cyan" href="http://teensinai.com">TeensInAI.com initiative</a>
         <br>
 
     </td>
@@ -1285,7 +1267,7 @@ http://github.com/axsauze/industrial-machine-learning
   </tr>
 </table>
 
-### <a style="color: cyan" href="#">Contact me at: a@e-x.io</a>
+### <a style="color: cyan" href="#">Join me at #PyDays18</a>
 
 
 
