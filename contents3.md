@@ -41,9 +41,9 @@
         <a style="color: cyan" href="http://ethical.institute">The Institute for Ethical AI & ML</a>
         <br>
         <br>
-        Member, Broader AI Expert Group
+        Fellow (AI, Data & ML)
         <br>
-        <a style="color: cyan" href="#">European Commission</a>
+        <a style="color: cyan" href="#">The RSA</a>
         <br>
         <br>
         Advisor
@@ -183,7 +183,7 @@ http://github.com/axsauze/industrial-machine-learning
 [NEXT]
 ## #LetsDoThis
 
-[NEXT SECTION]
+[NEXT]
 # 1. The Early Crypto-Beginnings
 
 [NEXT]
@@ -253,30 +253,20 @@ The result **$f(x̄)$** states whether it's a triangle or square
 (i.e. if it's larger than 0.5 it's triangle otherwise square)
 
 
-
 [NEXT]
-<!-- .slide: data-transition="slide-in fade-out" data-background="images/partistat.png" class="background smallquote" style="color: white" -->
-## The machine does the learning
+### We let the machine do the learning
 
 ![classification](images/feature-1.jpg)
 
-We give it two examples (one square, one triangle)
-
 [NEXT]
-<!-- .slide: data-transition="fade-in" data-background="images/partistat.png" class="background smallquote" style="color: white" -->
-## The machine does the learning
+### We let the machine do the learning
 
 ![classification](images/feature-2.jpg)
 
-We give it more examples
-
 [NEXT]
-<!-- .slide:data-transition="fade-in slide-out" data-background="images/partistat.png" class="background smallquote" style="color: white" -->
-## The machine does the learning
+### We let the machine do the learning
 
 ![classification](images/feature-3.jpg)
-
-and more...
 
 
 [NEXT]
@@ -291,10 +281,8 @@ Keep adjusting the weights...
 ![gradient_descent](images/gradient_descent_cropped.gif)
 
 
-
 [NEXT]
-<!-- .slide: data-transition="slide-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-## Finding the weights!
+### Finding the weights!
 
 <img width="40%" src="images/classification-line.png">
 
@@ -303,13 +291,11 @@ When it finishes, we find optimised weights and biases
 i.e. **$f(x̄)$ = triangle  if ($0.3 x̄ + 10$) > 0.5 else square**
 
 [NEXT]
-<!-- .slide: data-transition="fade-in slide-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-## Now predict new data
+### Now predict new data
 
 ![classification_small](images/classification-newinput.png)
 
-We now have a system that "knows" how to differentiate triangles from squares
-
+Once we have our function, we can predict NEW data!
 
 
 [NEXT]
@@ -445,7 +431,7 @@ results = predict(prices, times, 5)
 #cutting edge tech
 
 
-[NEXT SECTION]
+[NEXT]
 # 2. Diving deep into the hype
 
 [NEXT]
@@ -553,8 +539,7 @@ Each prediction is a **time step**.
 
 
 
-[NEXT] 
-<!-- .slide: data-transition="fade-in slide-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+[NEXT]
 ### Recurrent Networks
 
 ![rnn_compressed](images/rnn-loopcompressed.svg)
@@ -564,32 +549,25 @@ network.
 
 
 
-[NEXT] 
-<!-- .slide: data-transition="slide-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+[NEXT]
 ![rnn_unrolled_chars](images/rnn-unrolled-chars2.svg)
 
-[NEXT] 
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+[NEXT]
 ![rnn_unrolled_chars](images/rnn-unrolled-chars3.svg)
 
-[NEXT] 
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+[NEXT]
 ![rnn_unrolled_chars](images/rnn-unrolled-chars4.svg)
 
-[NEXT] 
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+[NEXT]
 ![rnn_unrolled_chars](images/rnn-unrolled-chars5.svg)
 
-[NEXT] 
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+[NEXT]
 ![rnn_unrolled_chars](images/rnn-unrolled-chars6.svg)
 
-[NEXT] 
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+[NEXT]
 ![rnn_unrolled_chars](images/rnn-unrolled-chars7.svg)
 
-[NEXT] 
-<!-- .slide: data-transition="fade-in slide-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+[NEXT]
 ![rnn_unrolled_chars](images/rnn-unrolled-chars8.svg)
 
 [NEXT]
@@ -735,7 +713,7 @@ Are we done then?
 The fun is just starting
 
 
-[NEXT SECTION]
+[NEXT]
 
 # 3. Going distributed 
 
@@ -959,7 +937,7 @@ We can pack our ba- oh, not yet?
 
 ### Not really 
 
-[NEXT SECTION]
+[NEXT]
 
 # 4. Smart Data Pipelines
 
@@ -1065,7 +1043,7 @@ Sub-DAG:
 
 
 
-[NEXT SECTION]
+[NEXT]
 # 5. Elastic DevOps Infrastructure
 
 
@@ -1242,7 +1220,7 @@ the roller-coaster keeps going!
 
 
 
-[NEXT SECTION]
+[NEXT]
 <!-- .slide: data-background="images/network-background.jpg" class="background smallest" -->
 
 ### But for us?
