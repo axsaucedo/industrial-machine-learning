@@ -62,7 +62,34 @@
 [NEXT]
 <!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
 
-# Industry-ready ML
+# Eigen Technologies
+
+> Building legal/back-office automation ML
+> <br>
+> <br>
+> Working in Finance, Legal and Insurance
+>
+> Recently raised 17.5m to expand operations
+> 
+> Using probabilistic models for text analysis
+
+### PS. We are hiring -> <a href="http://eigentech.com">eigentech.com</a>
+
+
+
+[NEXT]
+<!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
+
+#### The Institute for Ethical AI & ML
+<iframe style="height: 50vh; width: 100vw" src="http://ethical.institute"></iframe>
+#### <a href="http://ethical.institute">http://ethical.institute</a>
+
+
+    
+[NEXT]
+<!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
+
+## Today: Industry-ready ML
 
 > An overview of caveats in deploying ML
 > <br>
@@ -615,7 +642,7 @@ def deep_predict(prices):
 
     model.fit(x, y, batch_size=512, nb_epoch=1, validation_split=0.05)
 
-    return rnn_predict(model, x, prices)
+    return rnn_predict(model, x, prices, p)
 
 </code></pre>
 
@@ -656,7 +683,7 @@ def deep_predict(prices):
 
     model.fit(x, y, batch_size=512, nb_epoch=1, validation_split=0.05)
 
-    return rnn_predict(model, x, prices)
+    return rnn_predict(model, x, prices, p)
 
 </code></pre>
 
@@ -766,16 +793,7 @@ They tried getting larger and larger AWS servers
 <br>
 <br>
 
-### It's time to go for scale
-
-[NEXT]
-### Producer-consumer Architecture
-
-![distributed_architecture](images/distributed.png)
-
-The Crypto-ML Devs thought go distributed was too hard
-
-**It's not.**
+### It's time to go distributed
 
 [NEXT]
 # Introducing Celery
@@ -788,7 +806,17 @@ The Crypto-ML Devs thought go distributed was too hard
 * For Python
 
 [NEXT]
-## Step 1: Choose a function
+### Producer-consumer Architecture
+
+![distributed_architecture](images/distributed.png)
+
+The Crypto-ML Devs thought go distributed was too hard
+
+**It's not.**
+
+
+[NEXT]
+## Consumer - Step 1: Choose code
 
 <pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
 
@@ -805,9 +833,10 @@ def deep_predict(prices, times, predict=10):
 </code></pre>
 
 [NEXT]
-## Step 2: Celerize it
+## Consumer - Step 2: Celerize it
 
-<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; "># ml.py
+
 from celery import Celery
 from utils import load, dump
 
@@ -833,8 +862,17 @@ def deep_predict(d_prices, d_times, predict=10):
     return dump(model.predict(predict_times))
 </code></pre>
 
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; "># utils.py
+
+def dump(o):
+    return pickle.dumps(o).hex()
+
+def load(o):
+    return pickle.loads(bytearray.fromhex(o))
+</code></pre>
+
 [NEXT]
-## Step 3: Run it!
+## Consumer - Step 3: Run it!
 
 <pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">from crypto_ml.models import deep_predict</code></pre>
 
@@ -872,7 +910,7 @@ Now we just need to make the producer!
 
 [NEXT]
 
-## Step 1: Take the code
+## Producer Step 1: Find code
 
 <pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
 cl = CryptoLoader()
@@ -895,7 +933,7 @@ for k,v in results.items():
 </code></pre>
 
 [NEXT]
-## Step 2: Celerize it
+## Producer - Step 2: Celerize it
 
 <pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">from crypto_ml.data_loader import CryptoLoader
 from util import load, dump
@@ -926,7 +964,7 @@ for k,v in results.items():
 
 
 [NEXT]
-## Step 3: Run it!
+## Producer - Step 3: Run it!
 
 By just running the Python in a shell command!
 
@@ -947,6 +985,13 @@ $ celery -A crypto_ml flower
 
 ![distributed_architecture](images/flower.png)
 
+[NEXT]
+### Run more producers and consumers!
+
+![distributed_architecture](images/distributed.png)
+
+You can run them across multiple servers and grow horizontally very easily
+
 
 [NEXT]
 # Distriuted #Win
@@ -958,6 +1003,7 @@ We have surely won.
 We can pack our ba- oh, not yet?
 
 ### Not really 
+
 
 [NEXT SECTION]
 
@@ -997,27 +1043,125 @@ Their datapipeline is getting unmanagable!
 
 The swiss army knife of data pipelines
 
-[NEXT]
-# What Airflow IS
+<style>
+.check-bullets ul  {
+    list-style:none;
+}
+.check-bullets ul li {
+    padding-top: 10px;
+}
+.check-bullets ul li:before {
+    content: '✅ ';
+}
+.cross-bullets ul  {
+    list-style:none;
+}
+.cross-bullets ul li {
+    padding-top: 10px;
+}
+.cross-bullets ul li:before {
+    content: '❌ ';
+}
+</style>
 
-* Written in Python!
-* Alternative to Chronos (also built by AirBnb) + Luigi
-* Has a scheduler (like chronjob, but not like cronjob)
-* Can define tasks and dependent tasks (as a pipeline)
-* Has real-time visualisation of jobs
-* Modular separation between framework and logic
-* Can run on top of celery (without any modifications)
-* Being introduced to the apache family (incubation)
-* Actively maintained and growing community
-* Used by tons of companies (AirBnB, Paypal, Quora,)
+
 
 [NEXT]
 # What Airflow is NOT
 
-* Airflow is not perfect (but the best out there)
-* It's not a Lambda/FaaS framework (but can be programmed)
-* Is not extremely mature (ie incubation)
-* Airflow is not a data streaming solution (e.g. Storm/Spark Streaming)
+[NEXT]
+# What Airflow is NOT
+## ❌ Airflow is far from perfect 
+
+...but the best out there
+
+[NEXT]
+# What Airflow is NOT
+## ❌ It's not a Lambda/FaaS framework
+
+...although it could be programmed to be
+
+[NEXT]
+# What Airflow is NOT
+## ❌ Is not extremely mature 
+
+...hence it's in Apache "Incubation"
+
+[NEXT]
+# What Airflow is NOT
+## ❌ It's not fully stable
+
+...version 2.0 is being developed
+
+[NEXT]
+# What Airflow is NOT
+## ❌ Airflow is not a data streaming solution 
+
+...you could augment with STORM / Spark Streaming
+
+[NEXT]
+
+# What Airflow IS
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+# What Airflow IS
+## ✅  Written in Python with ♥ by AirBnb
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+# What Airflow IS
+<br>
+## ✅ Alternative to Luigi + Chronos (also built by AirBnb) 
+
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+# What Airflow IS
+<br>
+## ✅  Has a scheduler (like chronjob, but not like cronjob)
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+# What Airflow IS
+<br>
+## ✅ Can define tasks and dependent tasks (as a pipeline)
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+# What Airflow IS
+<br>
+## ✅ Has real-time visualisation of jobs
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+# What Airflow IS
+<br>
+## ✅ Modular separation between framework and logic
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+# What Airflow IS
+<br>
+## ✅ Can run on top of celery (without any modifications)
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+# What Airflow IS
+<br>
+## ✅ Being introduced to the apache family (incubation)
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+# What Airflow IS
+<br>
+## ✅ Actively maintained and growing community
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
+# What Airflow IS
+<br>
+## ✅ Used by tons of companies (AirBnB, Paypal, Quora,)
 
 [NEXT]
 # The DAG Architecture
@@ -1089,7 +1233,8 @@ They are processing massive loads of ML requests!
 ### Underestimating DevOps complexity
 
 * Complexity of staging and deploying ML models
-* Backwards compatibility of feature-spaces/models
+* Storing and standardising your training data
+* Abstracting interfaces to different ML libraries
 * Distributing load across infrastructure
 * Idle resource time minimisation
 * Node failure back-up strategies
@@ -1229,6 +1374,14 @@ kubectl create -f k8s/*
 ![weight_matrix](images/docker-mac.png)
 
 **Mini fist-pump**
+
+[NEXT]
+
+## Introducing Sledon
+<iframe style="height: 50vh; width: 100vw" src="https://docs.google.com/presentation/d/1CUrELIqLqnfiA54kRqyhv0fD3qt8hsjriH9Dm0ttE0A/edit#slide=id.g3bf3d35c42_0_55"></iframe>
+#### <a href="http://bit.ly/seldon-core-slides">bit.ly/seldon-core-slides</a>
+
+
 
 
 [NEXT]
