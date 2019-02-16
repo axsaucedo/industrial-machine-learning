@@ -1,7 +1,7 @@
 <!-- .slide: data-background="images/network-background.jpg" class="background" -->
 
 <h2>Industrial Machine Learning</h2>
-<h4>Horizontally scalable Machine Learning in Python</h4>
+<h4>Horizontally Scalable ML Pipelines with Airflow</h4>
 <p>
   <br />
   <br />
@@ -17,11 +17,12 @@
 
 <h2>Industrial Machine Learning</h2>
 
-<h4>Horizontally scalable Machine Learning in Python</h4>
+<h4>Horizontally Scalable ML Pipelines with Airflow</h4>
 
 <table class="bio-table">
   <tr>
     <td style="float: left">
+        <br>
         ![portrait](images/alejandro.jpg)
         <br>
         <font style="font-weight: bold; color: white">Alejandro Saucedo</font>
@@ -31,25 +32,27 @@
     <td style="float: left; color: white; font-size: 0.7em;">
 
         <br>
-        Head of Deployed Engineering
+        Chief Scientist
+        <br>
+        <a style="color: cyan" href="http://e-x.io">The Institute for Ethical AI & ML</a
+        <br>
+        <br>
+        <br>
+        <hr>
+        <br>
+        Head of Solutions Eng. & Sci.
         <br>
         <a style="color: cyan" href="http://eigentech.com">Eigen Technologies</a>
         <br>
         <br>
-        Chairman
+        Chief Technology Officer
         <br>
-        <a style="color: cyan" href="http://ethical.institute">The Institute for Ethical AI & ML</a>
-        <br>
-        <br>
-        Member, Broader AI Expert Group
-        <br>
-        <a style="color: cyan" href="#">European Commission</a>
+        <a style="color: cyan" href="#">Hack Partners</a>
         <br>
         <br>
-        Advisor
+        Software Engineer
         <br>
-        <a style="color: cyan" href="http://teensinai.com">TeensInAI.com Initiative</a>
-        <br>
+        <a style="color: cyan" href="#">Bloomberg LP.</a>
 
     </td>
   </tr>
@@ -57,32 +60,74 @@
   </tr>
 </table>
 
-### <a style="color: cyan" href="#">Contact me at: a@e-x.io</a>
-    
-[NEXT]
-<!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
-
-# Eigen Technologies
-
-> Building legal/back-office automation ML
-> <br>
-> <br>
-> Working in Finance, Legal and Insurance
->
-> Recently raised 17.5m to expand operations
-> 
-> Using probabilistic models for text analysis
-
-### PS. We are hiring -> <a href="http://eigentech.com">eigentech.com</a>
-
-
 
 [NEXT]
-<!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
+<!-- .slide: data-state="flashing" data-background-iframe="http://ethical.institute" data-background-color="black" class="background smallquote" style="color: white" -->
 
-#### The Institute for Ethical AI & ML
-<iframe style="height: 50vh; width: 100vw" src="http://ethical.institute"></iframe>
-#### <a href="http://ethical.institute">http://ethical.institute</a>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+## http://ethical.institute/
+
+[NEXT]
+<!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" -->
+
+## A new complexity
+
+![full_height](images/mleng-roles.png)
+
+## http://ethical.institute/
+
+[NEXT]
+<!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" -->
+
+## Tackling the core
+
+![full_height](images/mleng-expertise.png)
+
+## http://ethical.institute/
+
+
+[NEXT]
+<!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" -->
+## The core Principles
+
+![full_width](images/principles.jpg)
+
+## http://ethical.institute/
+
+
+[NEXT]
+<!-- .slide: data-background="images/partistat.png" class="background smallquote" style="color: white" -->
+
+## AI Procurement Framework
+
+<div class="left-col">
+<img src="images/rfx-cover.png" alt="">
+</div>
+<div class="right-col">
+<ul>
+    <br>
+    <li>
+        A set of tempaltes to support industry practitioners and suppliers in AI tenders. 
+    </li>
+    <br>
+    <li>
+        Fully open source, built using our "Machine Learning Maturity Model".
+    </li>
+</ul> 
+</div>
+
+
+
+
 
 
     
@@ -91,14 +136,14 @@
 
 ## Today: Industry-ready ML
 
-> An overview of caveats in deploying ML
+> Overview  & caveats in scaling data pipelines
 > <br>
 > <br>
-> Very high level talk
+> Airflow components (Celery, ML models, etc)
 >
-> Intuitive overview of ML
-> 
-> Going distributed, and beyond
+> Introducing difference between ML & Data Pipelines
+>
+> Overview of Airflow + Usecase
 
 ### The big picture
 
@@ -120,11 +165,15 @@
 > Let's jump the hype-train! 
 > <br>
 > <br>
-> A ML framework for <font style="color: cyan">crypto-data</font>
+> A large scale <font style="color: cyan">crypto-analysis</font> platform
 >
-> Supporting <font style="color: cyan">heavy compute/memory ML</font>
+> Heavy compute <font style="color: cyan">data analysis, Transform, Fetch...</font> 
 >
-> Can our system survive the 2017 <font style="color: cyan">crypto-craze?</font>
+> Going deep running <font style="color: cyan">predictions on LSTMs</font>
+>
+
+<br>
+#### Can we survive the 2017 <font style="color: cyan">crypto-craze?</font>
 
 [NEXT]
 <!-- .slide: data-background="images/network-background.jpg" class="background smallquote" -->
@@ -133,16 +182,10 @@
 
 > All historical data from top 100 cryptos
 >
-> Data goes from beginning to 11/2017
+> Data goes from beginning to 09/2017
 
 > 563871 daily-price (close) points 
->
-> <font style="font-weight: bold; color: cyan">Objectives:</font>
-<font style="color: white">
-* Supporting heavy ML computations
-* Supporting increasing traffic 
 
-</font>
 
 
 [NEXT]
@@ -195,14 +238,13 @@ manager.send_tasks()
 
 <!-- .element style="color: white;" -->
 
-
 [NEXT]
 <!-- .slide: data-background="images/network-background.jpg" class="background" -->
 ### Code
 https://github.com/axsauze/crypto-ml
 
 ### Slides
-http://github.com/axsauze/industrial-machine-learning
+http://github.com/axsauze/industrial-airflow
 
 
 
@@ -215,147 +257,27 @@ http://github.com/axsauze/industrial-machine-learning
 
 [NEXT]
 
-Crypto-ML Ltd. managed to obtain access to a unique dataset, which allowed them
+### JUNE 2017
 
-to built their initial prototype and raise massive amounts of VC money
+Crypto-ML Ltd. builds an incredibly accurate model
 
 <pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
-import random
+import random, time
 
 def predict_crypto(self, crypto_data):
-    # I have no clue what I'm doing
-    return crypto_data * random.uniform(0, 1)
+
+    # pretend to do something
+    time.sleep(10)
+
+    return crypto_data * random.uniform(1, 2)
 
 </code></pre>
 
-<br>
-
-### Now they need to figure out what ML is
+### Which resulted on £100m in VC money
 
 [NEXT]
 
-### ML Tutorials Everywhere
-
-![shapes](images/everywhere.jpg)
-
-
-[NEXT]
-Given some input data, predict the correct output
-
-![shapes](images/shapes.svg)
-
-Let's try to predict whether a shape is a square or a triangle
-
-### How do we do this?
-
-
-[NEXT]
-## Let's visualise it
-
-* Imagine a 2-d plot
-* The x-axis is the area of the input shape
-* The y-axis is the perimeter of the input shape
-
-![classification](images/classification-points.png)
-
-[NEXT]
-## All about the function
-
-<div class="left-col">
-**$f(x̄) = mx̄ + b$**, where:
-<br>
-<br>
-**x̄** is input (area & perimeter) </li>
-<br>
-<br>
-**m** and **b** are weights/bias
-<br>
-</div>
-
-<img width="40%" src="images/classification-line.png">
-
-The result **$f(x̄)$** states whether it's a triangle or square
-<br>
-<br>
-(i.e. if it's larger than 0.5 it's triangle otherwise square)
-
-
-
-[NEXT]
-<!-- .slide: data-transition="slide-in fade-out" data-background="images/partistat.png" class="background smallquote" style="color: white" -->
-## The machine does the learning
-
-![classification](images/feature-1.jpg)
-
-We give it two examples (one square, one triangle)
-
-[NEXT]
-<!-- .slide: data-transition="fade-in" data-background="images/partistat.png" class="background smallquote" style="color: white" -->
-## The machine does the learning
-
-![classification](images/feature-2.jpg)
-
-We give it more examples
-
-[NEXT]
-<!-- .slide:data-transition="fade-in slide-out" data-background="images/partistat.png" class="background smallquote" style="color: white" -->
-## The machine does the learning
-
-![classification](images/feature-3.jpg)
-
-and more...
-
-
-[NEXT]
-### Minimising loss function
-
-We optimise the model by **minimising its loss**.
-
-Keep adjusting the weights...
-
-...until loss is not getting any smaller.
-
-![gradient_descent](images/gradient_descent_cropped.gif)
-
-
-
-[NEXT]
-<!-- .slide: data-transition="slide-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-## Finding the weights!
-
-<img width="40%" src="images/classification-line.png">
-
-When it finishes, we find optimised weights and biases
-
-i.e. **$f(x̄)$ = triangle  if ($0.3 x̄ + 10$) > 0.5 else square**
-
-[NEXT]
-<!-- .slide: data-transition="fade-in slide-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-## Now predict new data
-
-![classification_small](images/classification-newinput.png)
-
-We now have a system that "knows" how to differentiate triangles from squares
-
-
-
-[NEXT]
-### We're ML experts!
-
-Please collect your certificates after the talk
-<br>
-<br>
-
-These are valid in:
-
-* Your Linkedin profile
-* Non-tech Meetups and Parties
-* Any time you reply to a tweet
-
-
-
-[NEXT]
-The Crypto-ML devs asked themselves...
+They found the perfect dataset
 
 <pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
 from crypto_ml.data_loader import CryptoLoader
@@ -374,399 +296,308 @@ btc.head()
 
 </code></pre>
 
-...can this be used for our cryptocurrency price data?
+but they had no idea what to do
 
 
 [NEXT]
-# Not yet.
+The Crypto-ML team realised copy pasting code from 
 
-Processing sequential data requires a different approach.
-<br>
-<br>
+### Stack overflow
 
-Instead of trying to predict two classes...
+wasn't enough...
 
-...we want to predict future steps
-<br>
-<br>
-
-
-[NEXT]
-# Sequential Models
-
-Sequential models often are used to predict future data.
-
-<div class="left-col">
-![classification_small](images/linreg.gif)
-</div>
-
-<div class="right-col">
-Still uses the same approach
-<br>
-
-`f(x) = mx + b`  
-<br>
-To find the weights and biases
-<br>
-<br>
-
-But can be used on time-sequence data - ie. prices, words, characters, etc.
-</div>
-
-
-
+![classification_large](images/copypasta.jpg)
 
 [NEXT]
 
-## The hello_world of sequential models
+They had to do it properly
 
-Predicting prices by fitting a line on set of time-series points
+they learned how to build their
 
-![classification_small](images/linear-regression.png)
+## Machine Learning Pipeline
 
-### Linear Regression
+[NEXT]
+<!-- .slide: data-transition="slide-in fade-out" -->
+## They found it breaks into
+
+![classification_large](images/mlall.png)
+
+**Model training/creation** and then **prediction with model**
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" -->
+1) Machine learning model development
+
+![classification_large](images/mltrain.png)
+
+[NEXT]
+<!-- .slide: data-transition="fade-in slide-out" -->
+And then, using our model to predict unseen inputs
+
+![classification_large](images/mlall.png)
+
+[NEXT]
+<!-- .slide: data-transition="fade-in slide-out" -->
+
+### CryptoML learned the hard way
+![classification_small](images/layer.jpg)
+
+### More layers != better performance
+
 
 
 [NEXT]
+<!-- .slide: data-transition="fade-in slide-out" -->
+### Following best practices does
 
-# Linear Regression
+![classification_large](images/mltemp1-training.png)
 
-<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
-from sklearn import linear_model
+* Analysing dataset representability, class imbalance, etc
+* Focusing in feature engineering and analysis
+* Using the right model for the right challenge
+* Taking a pragmatic approach on accuracy
+
+[NEXT]
+<!-- .slide: data-transition="slide-in fade-out" -->
+### The CryptoML Team felt ready 
+## to build their DL pipeline
 
 
-def predict(prices, times, predict=10):
+[NEXT]
+<!-- .slide: data-transition="slide-in fade-out" -->
 
-    model = linear_model.LinearRegression()
+### LSTM Training Model
 
-    model.fit(times, prices)
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
 
-    predict_times = get_prediction_timeline(times, predict)
+def train_lstm_model(prices):
 
-    return model.predict(predict_times)
+    x, y = build_lstm_data(prices, WINDOW_SIZE, training=True)
+   
+    model = get_rnn_model()
+
+    model.fit(x, y, batch_size=512, nb_epoch=1, validation_split=0.05)
+
+    model.save("latest_model.h5")
 
 </code></pre>
 
 [NEXT]
-# Linear Regression
+<!-- .slide: data-transition="fade-in fade-out" -->
+
+### LSTM Training Model
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+
+def train_lstm_model(prices):
+
+    # <- Clean and transform data
+    x, y = build_lstm_data(prices, WINDOW_SIZE, training=True)
+   
+    model = get_rnn_model()
+
+    model.fit(x, y, batch_size=512, nb_epoch=1, validation_split=0.05)
+
+    model.save("latest_model.h5")
+
+</code></pre>
+
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" -->
+
+### LSTM Training Model
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+
+def train_lstm_model(prices):
+
+    # <- Clean and transform data
+    x, y = build_lstm_data(prices, WINDOW_SIZE, training=True)
+   
+    # <- Select your model
+    model = get_rnn_model()
+
+    model.fit(x, y, batch_size=512, nb_epoch=1, validation_split=0.05)
+
+    model.save("latest_model.h5")
+
+</code></pre>
+
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" -->
+
+### LSTM Training Model
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+
+def train_lstm_model(prices):
+
+    # <- Clean and transform data
+    x, y = build_lstm_data(prices, WINDOW_SIZE, training=True)
+   
+    # <- Select your model
+    model = get_rnn_model()
+
+    # <- Train your model
+    model.fit(x, y, batch_size=512, nb_epoch=1, validation_split=0.05)
+
+    model.save("latest_model.h5")
+
+</code></pre>
+
+[NEXT]
+<!-- .slide: data-transition="fade-in slide-out" -->
+
+### LSTM Training Model
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+
+def train_lstm_model(prices):
+
+    # <- Clean and transform data
+    x, y = build_lstm_data(prices, WINDOW_SIZE, training=True)
+   
+    # <- Select your model
+    model = get_rnn_model()
+
+    # <- Train your model
+    model.fit(x, y, batch_size=512, nb_epoch=1, validation_split=0.05)
+
+    # <- Persist your model
+    model.save("latest_model.h5")
+
+</code></pre>
+
+
+
+[NEXT]
+<!-- .slide: data-transition="slide-in fade-out" -->
+### LSTM Trained Model Inference
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+
+def deep_predict(prices):
+
+    x = build_lstm_data(prices, WINDOW_SIZE, training=False)
+
+    model = load_model("latest_model.h5")
+
+    return model.predict(x)
+
+</code></pre>
+
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" -->
+### LSTM Trained Model Inference
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+
+def deep_predict(prices):
+
+    # <- Transform data
+    x = build_lstm_data(prices, WINDOW_SIZE, training=False)
+
+    model = load_model("latest_model.h5")
+
+    return model.predict(x)
+
+</code></pre>
+
+
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" -->
+### LSTM Trained Model Inference
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+
+def deep_predict(prices):
+
+    # <- Transform data
+    x = build_lstm_data(prices, WINDOW_SIZE, training=False)
+
+    # <- Load model
+    model = load_model("latest_model.h5")
+
+    return model.predict(x)
+
+</code></pre>
+
+
+
+[NEXT]
+<!-- .slide: data-transition="fade-in slide-out" -->
+### LSTM Trained Model Inference
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+
+def deep_predict(prices):
+
+    # <- Transform data
+    x = build_lstm_data(prices, WINDOW_SIZE, training=False)
+
+    # <- Load model
+    model = load_model("latest_model.h5")
+
+    # <- Predict using your model
+    return model.predict(x)
+
+</code></pre>
+
+
+
+[NEXT]
+# It works!
 
 <pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
 from crypto_ml.data_loader import CryptoLoader
 
 
 cl = CryptoLoader()
-
 df = cl.get_df("bitcoin")
 
-times = df[["Date"]].values
 prices = df[["Price"]].values
 
-results = predict(prices, times, 5)
+# Train model
+train_lstm_model(prices)
+
+# Predict using trained model
+result = deep_predict(prices)
 
 </code></pre>
 
-### Success
+[NEXT]
+### Production you say?
 
 [NEXT]
-### But the Crypto-ML team wants 
-#cutting edge tech
 
-
-[NEXT SECTION]
-# 2. Diving deep into the hype
-
-[NEXT]
-The Crypto-ML team realised that their usecases were much more complex
-
-![perceptron_learning](images/perceptron_learning4.png)
-
-[NEXT]
-The team had to learn many critical points on machine learning development!
+<div class="left-col">
+![classification_small](images/crontab.jpg)
+</div>
 
 <div class="right-col">
-![perceptron_learning](images/perceptron_learning4.png)
-</div>
 
 <br>
-<div class="left-col">
-<ul>
-<li> Extending our feature space</li>
-<li> Increasing number of inputs</li>
-<li> Regularisation techniques (dropout, batch normalisation)</li>
-<li> Normalising datasets</li>
-</ul>
-
+<br>
+<h1>Sure!</h1>
 </div>
 
+<br style="clear: both">
 
-[NEXT]
-But they also stumbled upon some neural network tutorials...
-
-
-[NEXT]
-
-### Remember our favourite function?
-
-`f(x) = mx + b`
-
-Now on a simple perceptron function
-
-in a neural network
-<br>
-
-![perceptron](images/perceptron.svg)
-
-
-
-[NEXT]
-### Instead of just one neuron
-
-![rnn_diagram](images/rnn-perceptron.svg)
-
-[NEXT]
-### We just have many
-
-![rnn_diagram](images/rnn-feedforward.svg)
-
-This gives the function more flexibility
-
-
-
-[NEXT]
-### With a few layers
-
-![deep_rnn_diagram](images/rnn-feedforwardlayers.svg)
-
-This gives more flexibility for learning
-
-[NEXT]
-
-### Deep Neural Networks 
-
-![perceptron_learning](images/layer.jpg)
-
-[NEXT]
-### Deep Networks &mdash; many hidden layers
-
-![deep_rnn_diagram](images/rnn-deepfeedforward.svg)
-
-[NEXT]
-
-For sequential models?
-## Deep Recurrent Neural Networks
-# (e.g. LSTMs)
-
-
-[NEXT]
-### Simplified Visualisation
-![rnn_compress_expanded](images/rnn-compress-expanded.svg)
-One node represents a full layer of neurons.
-
-[NEXT]
-### Simplified Visualisation
-
-![rnn_compressed](images/rnn-compress.svg)
-
-One node represents a full layer of neurons.
-
-
-[NEXT]
-### Unrolled Recurrent Network
-Previous predictions help make the _next_ prediction.
-
-Each prediction is a **time step**.
-
-![rnn_unrolled_chars](images/rnn-unrolled-chars1.svg)
-
-
-
-[NEXT] 
-<!-- .slide: data-transition="fade-in slide-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-### Recurrent Networks
-
-![rnn_compressed](images/rnn-loopcompressed.svg)
-
-Hidden layer's input includes the output of itself during the last run of the
-network.
-
-
-
-[NEXT] 
-<!-- .slide: data-transition="slide-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-![rnn_unrolled_chars](images/rnn-unrolled-chars2.svg)
-
-[NEXT] 
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-![rnn_unrolled_chars](images/rnn-unrolled-chars3.svg)
-
-[NEXT] 
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-![rnn_unrolled_chars](images/rnn-unrolled-chars4.svg)
-
-[NEXT] 
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-![rnn_unrolled_chars](images/rnn-unrolled-chars5.svg)
-
-[NEXT] 
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-![rnn_unrolled_chars](images/rnn-unrolled-chars6.svg)
-
-[NEXT] 
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-![rnn_unrolled_chars](images/rnn-unrolled-chars7.svg)
-
-[NEXT] 
-<!-- .slide: data-transition="fade-in slide-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-![rnn_unrolled_chars](images/rnn-unrolled-chars8.svg)
-
-[NEXT]
-
-### Loss/Cost function
-Cost function is based on getting the prediction right!
-
-![rnn_unrolled_chars](images/rnn-unrolled-chars9.svg)
-
-
-[NEXT]
-### Training an RNN in Python
-
-<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
-
-def deep_predict(prices):
-
-    p = 10
-
-    model = get_rnn_model()
-
-    x, y = build_lstm_data(prices, 50)
-
-    model.fit(x, y, batch_size=512, nb_epoch=1, validation_split=0.05)
-
-    return rnn_predict(model, x, prices, p)
-
-</code></pre>
-
-* Build model
-* Compute the weights
-* Return the prediction
-
-
-[NEXT]
-### Not too different, eh!
-
-<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
-from sklearn import linear_model
-
-
-def predict(prices, times, predict=10):
-
-    model = linear_model.LinearRegression()
-
-    model.fit(times, prices)
-
-    predict_times = get_prediction_timeline(times, predict)
-
-    return model.predict(predict_times)
-
-</code></pre>
-
-
-<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
-
-def deep_predict(prices):
-
-    p = 10
-
-    model = get_rnn_model()
-
-    x, y = build_lstm_data(prices, 50)
-
-    model.fit(x, y, batch_size=512, nb_epoch=1, validation_split=0.05)
-
-    return rnn_predict(model, x, prices, p)
-
-</code></pre>
-
-[NEXT]
-### Code to build the the LSTM
-
-<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
-from keras.layers.core import Dense, Activation, Dropout
-from keras.layers.recurrent import LSTM
-from keras.models import Sequential
-import lstm
-
-def get_rnn_model():
-    model = Sequential()
-    model.add(LSTM(input_dim=1, output_dim=50, return_sequences=True))
-    model.add(Dropout(0.2))
-
-    model.add(LSTM(100, return_sequences=False))
-    model.add(Dropout(0.2))
-
-    model.add(Dense(output_dim=1))
-    model.add(Activation('linear'))
-
-    model.compile(loss="mse", optimizer="rmsprop")
-
-    return model
-
-</code></pre>
-
-A linear dense layer to aggregate the data into a single value
-
-Compile with mean sq. error & gradient descent as optimizer
-
-Simple!
-
-
-[NEXT]
-# RNN Test-run
-
-<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em">
-from crypto_ml.data_loader import CryptoLoader
-
-
-cl = CryptoLoader()
-
-df = cl.get_df("bitcoin")
-
-times = df[["Date"]].values
-prices = df[["Price"]].values
-
-results = deep_predict(prices, times, 5)
-
-</code></pre>
-
-
-### Success
-
-[NEXT]
-
-# Side note
-
-In this example we are training and predicting in the same function.
-
-Normally you would train your model, and then run the model in "production" for predictions
-
-
-[NEXT]
-
-## Crypto-ML 
-# has the DL!
-
-Are we done then?
-
-# Nope
-
-The fun is just starting
+## Good old crontab
+#### It's never failed anyone in production
 
 
 [NEXT SECTION]
 
-# 3. Going distributed 
+# 2. Going distributed 
 
 [NEXT]
+
+## September 2017
 
 After CryptoML was caught using deep learning...
 
@@ -776,23 +607,11 @@ After CryptoML was caught using deep learning...
 
 ## Their userbase exploded
 
-Now they have quite a few users coming in every day 
+They had a massive increase in their user-base
 
-Each user is running several ML algorithms concurrently
-
-They tried getting larger and larger AWS servers
+Users are running too many requests that can't be handled
 
 [NEXT]
-## They should've seen this coming
-
-* Machine learning is known for being computing heavy
-* But often it's forgotten how memory-heavy it is
-* I'm talking VERY heavy - holding whole models in-mem
-* Scaling to bigger instances with more cores is expensive
-* Having everything in one node is a central point of failure
-<br>
-<br>
-
 ### It's time to go distributed
 
 [NEXT]
@@ -812,79 +631,145 @@ They tried getting larger and larger AWS servers
 
 The Crypto-ML Devs thought go distributed was too hard
 
-**It's not.**
+**It's not with celery.**
 
 
 [NEXT]
+<!-- .slide: data-transition="slide-in fade-out" -->
 ## Consumer - Step 1: Choose code
 
 <pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em">
+def deep_predict(prices):
 
-def deep_predict(prices, times, predict=10):
+    x = build_lstm_data(prices, WINDOW_SIZE, training=False)
 
-    model = utils.get_rnn_model()
+    model = load_model("latest_model.h5")
 
-    model.fit(time, prices, batch_size=512, nb_epoch=1, validation_split=0.05)
-
-    predict_times = get_prediction_timeline(times, predict)
-
-    return model.predict(predict_times)
+    return model.predict(x)
 
 </code></pre>
 
 [NEXT]
+<!-- .slide: data-transition="fade-in fade-out" -->
 ## Consumer - Step 2: Celerize it
 
-<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; "># ml.py
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+app = Celery('crypto_ml')
 
-from celery import Celery
-from utils import load, dump
-
-# Initialise celery with rabbitMQ address
-app = Celery('crypto_ml',
-    backend='amqp://guest@localhost/',    
-    broker='amqp://guest@localhost/')
-
-# Add decorator for task (can also be class)
 @app.task
-def deep_predict(d_prices, d_times, predict=10):
+def deep_predict(d_prices):
 
-    # Load from stringified binaries (Pandas Dataframes)
-    prices = load(d_prices)
-    times = load(d_times)
+    prices = load(prices)
 
-    model = utils.get_rnn_model()
+    x = build_lstm_data(prices, WINDOW_SIZE, training=False)
 
-    model.fit(time, prices, batch_size=512, nb_epoch=1, validation_split=0.05)
+    model = load_model("latest_model.h5")
 
-    predict_times = get_prediction_timeline(times, predict)
+    return dump(model.predict(prices))
 
-    return dump(model.predict(predict_times))
 </code></pre>
 
-<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; "># utils.py
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" -->
+## Consumer - Step 2: Celerize it
 
-def dump(o):
-    return pickle.dumps(o).hex()
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+# <- Initialise celery with id
+app = Celery('crypto_ml')
 
-def load(o):
-    return pickle.loads(bytearray.fromhex(o))
+@app.task
+def deep_predict(d_prices):
+
+    prices = load(prices)
+
+    x = build_lstm_data(prices, WINDOW_SIZE, training=False)
+
+    model = load_model("latest_model.h5")
+
+    return dump(model.predict(prices))
+
 </code></pre>
+
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" -->
+## Consumer - Step 2: Celerize it
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+# <- Initialise celery with id
+app = Celery('crypto_ml')
+
+# <- Convert function into distributed
+@app.task
+def deep_predict(d_prices):
+
+    prices = load(prices)
+
+    x = build_lstm_data(prices, WINDOW_SIZE, training=False)
+
+    model = load_model("latest_model.h5")
+
+    return dump(model.predict(prices))
+
+</code></pre>
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" -->
+## Consumer - Step 2: Celerize it
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+# <- Initialise celery with id
+app = Celery('crypto_ml')
+
+# <- Convert function into distributed
+@app.task
+def deep_predict(d_prices):
+
+    # <- De-serialise input from queue
+    prices = load(prices)
+
+    x = build_lstm_data(prices, WINDOW_SIZE, training=False)
+
+    model = load_model("latest_model.h5")
+
+    return dump(model.predict(prices))
+
+</code></pre>
+
+
+[NEXT]
+<!-- .slide: data-transition="fade-in slide-out" -->
+## Consumer - Step 2: Celerize it
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+# <- Initialise celery with id
+app = Celery('crypto_ml')
+
+# <- Convert function into distributed
+@app.task
+def deep_predict(d_prices):
+
+    # <- De-serialise input from queue
+    prices = load(prices)
+
+    x = build_lstm_data(prices, WINDOW_SIZE, training=False)
+
+    model = load_model("latest_model.h5")
+
+    # <- Serialise output to return to queue
+    return dump(model.predict(prices))
+
+</code></pre>
+
+
+
 
 [NEXT]
 ## Consumer - Step 3: Run it!
 
-<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">from crypto_ml.models import deep_predict</code></pre>
-
 <pre><code class="code bash hljs" style="font-size: 0.8em; line-height: 1em; ">
 $ celery -A crypto_ml worker
 
-</code></pre>
-
-Monitor the activity logs:
-
-<pre><code class="code bash hljs" style="font-size: 0.8em; line-height: 1em; ">
-$ celery -A crypto_ml worker
 Darwin-15.6.0-x86_64-i386-64bit 2018-03-10 00:43:28
 
 [config]
@@ -906,67 +791,146 @@ Darwin-15.6.0-x86_64-i386-64bit 2018-03-10 00:43:28
 
 Now we just need to make the producer!
 
-**We can just follow the same recipe**
+<br>
+**Pretty much just calling the function**
 
 [NEXT]
-
-## Producer Step 1: Find code
+<!-- .slide: data-transition="slide-in fade-out" -->
+## Producer - Normal function
 
 <pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
-cl = CryptoLoader()
-results = {}
 
-# Compute results
-for name in cl.get_crypto_names():
+prices = cl.get_prices("bitcoin")
 
-    prices, times = cl.get_prices(name)
+result = deep_predict(prices)
 
-    result = deep_predict(prices, times)
+print(result)
 
-    results[name] = result
-
-# Print results
-for k,v in results.items():
-    print(k, v)
-
-
-</code></pre>
-
-[NEXT]
-## Producer - Step 2: Celerize it
-
-<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">from crypto_ml.data_loader import CryptoLoader
-from util import load, dump
-
-cl = CryptoLoader()
-results = {}
-
-# Send task for distributed computing
-for name in cl.get_crypto_names():
-
-    prices, times = cl.get_prices(name)
-
-    task = deep_predict.delay(
-                      dump(prices)
-                    , dump(times))
-
-    results[name] = task
-
-# Wait for results and print
-for k,v in results.items():
-    p_result = v.get()
-
-    if result:
-        result = load(p_result)
-        print(k, result)
 
 </code></pre>
 
 
 [NEXT]
-## Producer - Step 3: Run it!
+<!-- .slide: data-transition="fade-in fade-out" -->
+## Producer - Celerised function
 
-By just running the Python in a shell command!
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+prices = cl.get_prices("bitcoin")
+
+d_prices = dump(prices)
+
+task = deep_predict.delay(d_prices)
+
+p_result = task.get()
+
+result = load(p_result)
+
+print(result)
+
+</code></pre>
+
+
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" -->
+## Producer - Celerised function
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+prices = cl.get_prices("bitcoin")
+
+# <- Serialise inputs
+d_prices = dump(prices)
+
+task = deep_predict.delay(d_prices)
+
+p_result = task.get()
+
+result = load(p_result)
+
+print(result)
+
+</code></pre>
+
+
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" -->
+## Producer - Celerised function
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+prices = cl.get_prices("bitcoin")
+
+# <- Serialise inputs
+d_prices = dump(prices)
+
+# <- Call function through distributed worker
+task = deep_predict.delay(d_prices)
+
+p_result = task.get()
+
+result = load(p_result)
+
+print(result)
+
+</code></pre>
+
+
+
+[NEXT]
+<!-- .slide: data-transition="fade-in fade-out" -->
+## Producer - Celerised function
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+prices = cl.get_prices("bitcoin")
+
+# <- Serialise inputs
+d_prices = dump(prices)
+
+# <- Call function through distributed worker
+task = deep_predict.delay(d_prices)
+
+# <- Wait for task to finish
+p_result = task.get()
+
+result = load(p_result)
+
+print(result)
+
+</code></pre>
+
+
+[NEXT]
+<!-- .slide: data-transition="fade-in slide-out" -->
+## Producer - Celerised function
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+prices = cl.get_prices("bitcoin")
+
+# <- Serialise inputs
+d_prices = dump(prices)
+
+# <- Call function through distributed worker
+task = deep_predict.delay(d_prices)
+
+# <- Wait for task to finish
+p_result = task.get()
+
+# <- De-serialise result
+result = load(p_result)
+
+print(result)
+
+</code></pre>
+
+
+
+
+[NEXT]
+## When we run producer
+
+It adds the task to the queue
+
+And it's picked up by a worker
 
 
 ![distributed_architecture](images/distributed.png)
@@ -1000,22 +964,41 @@ We now have ML, and are distributed.
 
 We have surely won.
 
-We can pack our ba- oh, not yet?
-
-### Not really 
+### Not really - getting there
 
 
 [NEXT SECTION]
 
-# 4. Smart Data Pipelines
+# 3. Smart Data Pipelines
 
 [NEXT]
-### The Crypto-ML has now an exponentially increasing amount of internal use-cases
 
-Their datapipeline is getting unmanagable!
+# December 2017
+
+<div class="left-col">
+![full_height](images/santa.jpg)
+</div>
+<div class="right-col">
+![full_height](images/bitcoin-dec.jpg)
+</div>
 
 [NEXT]
-## Growingly complex data flows
+The Crypto-ML has now an 
+### exponentially increasing 
+amount of 
+## internal/external use-cases
+
+Their data pipeline is getting unmanagable!
+
+[NEXT]
+
+## They also realised ML is the tip of the iceberg
+![distributed_architecture](images/mlecosystem.png)
+
+People forget only a small fraction of real-world machine learning is composed of actual ML code
+
+[NEXT]
+## Growing data flow complexity
 
 * There is a growing need to pull data from different sources
 * There is a growing need to pre- and post-process data
@@ -1027,43 +1010,14 @@ Their datapipeline is getting unmanagable!
 <br>
 <br>
 
-[NEXT]
-# You want to go from here
-
-![cron_tab](images/crontab.jpg)
 
 [NEXT]
-# To here
+#### Introducing 
+# Airflow
 
-![airflow](images/airflow.png)
-
-
-[NEXT]
-# Introducing Airflow
+![airflow](images/airflow.jpeg)
 
 The swiss army knife of data pipelines
-
-<style>
-.check-bullets ul  {
-    list-style:none;
-}
-.check-bullets ul li {
-    padding-top: 10px;
-}
-.check-bullets ul li:before {
-    content: '✅ ';
-}
-.cross-bullets ul  {
-    list-style:none;
-}
-.cross-bullets ul li {
-    padding-top: 10px;
-}
-.cross-bullets ul li:before {
-    content: '❌ ';
-}
-</style>
-
 
 
 [NEXT]
@@ -1101,84 +1055,221 @@ The swiss army knife of data pipelines
 
 [NEXT]
 
-# What Airflow IS
+## Let's now dive into Airflow
 
 [NEXT]
 <!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-# What Airflow IS
-## ✅  Written in Python with ♥ by AirBnb
+# Airflow in brief
+* A data pipeline framework 
+* Written in Python 
+* It has an active community
+* Provides a UI for management
 
 [NEXT]
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-# What Airflow IS
-<br>
-## ✅ Alternative to Luigi + Chronos (also built by AirBnb) 
-
-
-[NEXT]
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-# What Airflow IS
-<br>
-## ✅  Has a scheduler (like chronjob, but not like cronjob)
-
-[NEXT]
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-# What Airflow IS
-<br>
-## ✅ Can define tasks and dependent tasks (as a pipeline)
-
-[NEXT]
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-# What Airflow IS
-<br>
-## ✅ Has real-time visualisation of jobs
-
-[NEXT]
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-# What Airflow IS
-<br>
-## ✅ Modular separation between framework and logic
-
-[NEXT]
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-# What Airflow IS
-<br>
-## ✅ Can run on top of celery (without any modifications)
-
-[NEXT]
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-# What Airflow IS
-<br>
-## ✅ Being introduced to the apache family (incubation)
-
-[NEXT]
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-# What Airflow IS
-<br>
-## ✅ Actively maintained and growing community
-
-[NEXT]
-<!-- .slide: data-transition="fade-in fade-out" data-background="images/partistat.png" class="smallquote" style="color: black !important" -->
-# What Airflow IS
-<br>
-## ✅ Used by tons of companies (AirBnB, Paypal, Quora,)
-
-[NEXT]
-# The DAG Architecture
+## DAGs are Airflow's core
 
 ![cron_tab](images/graphview.png)
 
+## DAG = Directed Acyclic Graphs
+
+These are ETL operations that are executed in order
+and only execute if the previous ones are succesful
 
 [NEXT]
-# The scheduler
+
+### DAGs are defined programatically
+
+These contain the execution order for operators
+
+``` python
+# Define DAG
+DAG = DAG(dag_id="test",    
+            start_date=datetime.now(), 
+            schedule_interval="@once")
+
+# Define operators
+operator_1 = ...
+operator_2 = ...
+operator_3 = ...
+
+# Define order
+operator_1 >> operator_2 >> operator_3
+```
+
+As well as the schedule for execution
+
+
+[NEXT]
+## DAGs overview in list screen
+View all DAGs, together with the schedule of execution
 
 ![cron_tab](images/scheduler.png)
 
+As well as the recent status of executed DAGs
+
 
 [NEXT]
-# The tree view (and sub-components)
+## Detailed DAG View
 
 ![cron_tab](images/treeview.png)
+
+[NEXT]
+
+## Operators are easy to define
+
+<pre><code class="code python hljs" style="font-size: 1em; line-height: 1em; ">
+# Create python functions
+DAG = ...
+
+def crypto_prediction():
+    data = ... # gather some data
+    prediction = ... # run some prediction
+    db.store(prediction) # store prediction
+
+# Define Operators
+crypto_task = PythonOperator(
+    task_id='pull_task',
+    python_callable=crypto_prediction, # <- Add python function
+    dag=DAG)
+
+</code></pre>
+
+Here is an example of a PythonOperator
+
+
+[NEXT]
+
+## Airflow provides default operators
+
+![cron_tab](images/airflowoperators.png)
+
+You can use things like BranchOperator, SensorOperator, etc
+
+
+
+[NEXT]
+
+## Passing Data downstream
+
+We can pass data across operators downstream with xcom
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+# Create python functions
+def push_function():
+    return ['a', 'b', 'c']
+
+def pull_function(**kwargs):
+    params = kwargs['ti'].xcom_pull(task_ids='push_task')
+    print(params)
+
+# Define Operators
+pull_task = PythonOperator(
+    task_id='pull_task',
+    python_callable=pull_function,
+    provide_context=True, # <- we pass the context
+    dag=DAG)
+
+push_task = PythonOperator(
+    task_id='push_task',
+    python_callable=push_function,
+    provide_context=True, # <- again we pass the context
+    dag=DAG)
+
+# DAG order definition
+push_task >> pull_task
+
+</code></pre>
+
+This is useful to hold state data, such as a DB index IDs
+
+[NEXT]
+
+## Visualise downstream params
+
+![cron_tab](images/xcom.png)
+
+You can see XCom parameters for each operator run
+
+
+
+[NEXT]
+## Airflow is modular
+
+Modular separation of code, operators, dags, subdags, etc
+
+![cron_tab](images/subdags.png)
+<!-- .element: style="width: 70%" -->
+
+This allows for better testing and re-usability
+
+[NEXT]
+## Airflow is extensible 
+
+Airflow also allows you to write your own custom "plugins"
+
+<pre><code class="code python hljs" style="font-size: 0.8em; line-height: 1em; ">
+from util import load, dump
+class AirflowPlugin(object):
+    # The name of your plugin (str)
+    name = None
+    # A list of class(es) derived from BaseOperator
+    operators = []
+    # A list of class(es) derived from BaseHook
+    hooks = []
+    # A list of class(es) derived from BaseExecutor
+    executors = []
+    # A list of references to inject into the macros namespace
+    macros = []
+    # A list of objects created from a class derived
+    # from flask_admin.BaseView
+    admin_views = []
+    # A list of Blueprint object created from flask.Blueprint
+    flask_blueprints = []
+    # A list of menu links (flask_admin.base.MenuLink)
+    menu_links = []
+
+</code></pre>
+
+It's possible to write your own Operators, hooks, etc
+
+[NEXT]
+If that's not awesome enough...
+
+[NEXT]
+It uses celery as task runner
+
+![celery_celery](images/celery.jpg)
+
+As well as ability to use different backends
+
+
+
+[NEXT]
+## The Crypto-ML Usecase
+
+Crypto-ML wants a workflow where:
+
+* They pull crypto-data every day
+* Data is transformed & standardised
+* Once ready, a prediction should be computed
+* Prediction should be stored in DB
+* If relevant, a trade should be executed
+
+[NEXT]
+
+Let's break this down into Airflow terminology
+
+[NEXT]
+## Sub-DAG for each crypto
+
+![cron_tab](images/cryptodag-2.png)
+
+[NEXT]
+## DAG for all daily crypto job
+
+![cron_tab](images/cryptodag.png)
+
+
 
 [NEXT]
 ## The Crypto-ML Usecase
@@ -1196,9 +1287,9 @@ Sub-DAG:
 
 
 [NEXT]
-## The Crypto-ML Usecase
+Success!
 
-![cron_tab](images/cryptodag.png)
+![weight_matrix](images/sv.gif)
 
 
 
@@ -1208,186 +1299,30 @@ Sub-DAG:
 ## [airflow.apache.org](https://airflow.apache.org/)
 
 
-
-[NEXT SECTION]
-# 5. Elastic DevOps Infrastructure
-
-
 [NEXT]
-The CryptoML team remembers the easy days...
 
-...when they only had a few new users a day
-
-Now they have much heavier traffic!
-
-They are working with large organsations!
-
-They are processing massive loads of ML requests!
+## Airflow Alternatives
+* Luigi
+* Pinball
+* Seldon Core
 
 <br>
-### Their DevOps infrastructure 
-# Can't keep up!
+## Other similar (but different)
+* Dask
+* Apache Kafka
 
 [NEXT]
 
-### Underestimating DevOps complexity
+### Special Mentions
+* Docker
+* Kubernetes
 
-* Complexity of staging and deploying ML models
-* Storing and standardising your training data
-* Abstracting interfaces to different ML libraries
-* Distributing load across infrastructure
-* Idle resource time minimisation
-* Node failure back-up strategies
-* Testing of Machine Learning functionality
-* Monitoring of ML ecosystem
-* And the list goes on and on...
+<br>
+#### Implementations are in the codebase
 
 
 [NEXT]
-## Did anyone say docker?
-
-![weight_matrix](images/docker.png)
-
-Package it. Ship it.
-
-
-[NEXT]
-## Gotta love the simplicity
-
-```
-from conda/miniconda3-centos7:latest
-
-ADD . /crypto_ml/
-WORKDIR /crypto_ml/
-
-# Dependency for one of the ML predictors
-RUN yum install mesa-libGL -y
-
-# Install all the dependencies
-RUN conda env create -f crypto_ml.yml
-```
-
-and...
-
-```
-docker -t crypto_ml .
-```
-
-it's done!
-
-
-[NEXT]
-## Can this be more awesome?
-####Yes it can!
-
-Packaging it up and installing through pip/conda.
-
-```
-from conda/miniconda3-centos7:latest
-RUN conda install <YOUR_PACKAGE>
-```
-Nice and simple!
-
-[NEXT]
-### The obvious docker-compose
-<pre><code class="code python hljs" style="font-size: 0.6em; line-height: 1em">version: '2'
-services:
-    manager:
-        container_name: crypto_manager
-        image: crypto_ml
-        build: .
-        links:
-            - rabbitmq
-        depends_on:
-            - rabbitmq
-        command: tail -f /dev/null
-    worker:
-        container_name: crypto_worker
-        image: crypto_ml
-        build: .
-        links:
-            - rabbitmq
-        depends_on:
-            - rabbitmq
-        command: /usr/local/envs/crypto_ml/bin/celery -A crypto_ml worker --prefetch-multiplier 1 --max-tasks-per-child 1 -O fair
-    rabbitmq:
-        container_name: rabbitmq
-        image: rabbitmq:3.6.0
-        environment:
-            - RABBITMQ_DEFAULT_USER=user
-            - RABBITMQ_DEFAULT_PASS=1234
-        ports:
-            - 4369
-            - 5672
-            - 15672
-</code></pre>
-
-It all just works automagically!
-
-```
-docker-compose up --scale crypto_worker=4
-```
-
-[NEXT]
-#### Taking it to the next level with
-# Kubernetes
-
-![weight_matrix](images/kube.png)
-
-[NEXT]
-#### All the YML
-
-![distributed_architecture](images/kubectl.png)
-
-Creating all the services and controllers
-
-```
-kubectl create -f k8s/*
-```
-
-[NEXT]
-
-# Kubernetes: Dev
-
-#### Development
-* Minikube
-* Docker for Mac
-
-[NEXT]
-
-# Kubernetes: Prod
-#### Enterprise
-* Elastic Container Service for K8s (AWS)
-* CoreOS Tectonic
-* Red Hat OpenShift
-
-[NEXT]
-# Kubernetes: Tools
-#### Many options
-* CloudFormation (AWS)
-* Terraform
-* Kops
-
-[NEXT]
-#### Docker for Mac now supports it!
-
-![weight_matrix](images/docker-mac.png)
-
-**Mini fist-pump**
-
-[NEXT]
-
-## Introducing Sledon
-<iframe style="height: 50vh; width: 100vw" src="https://docs.google.com/presentation/d/1CUrELIqLqnfiA54kRqyhv0fD3qt8hsjriH9Dm0ttE0A/edit#slide=id.g3bf3d35c42_0_55"></iframe>
-#### <a href="http://bit.ly/seldon-core-slides">bit.ly/seldon-core-slides</a>
-
-
-
-
-[NEXT]
-What's next for Crypto-ML?
-
-![weight_matrix](images/sv.gif)
+### What's next for Crypto-ML?
 
 As with every other tech startup
 
@@ -1400,13 +1335,16 @@ the roller-coaster keeps going!
 
 ### But for us?
 
-> Obtained an intuitive understanding on ML
-> 
-> Learned about caveats on practical ML
-> 
-> Obtained tips on building distributed architectures
-> 
-> Got an taste of elastic DevOps infrastructure
+> Got an overview in scaling data pipelines
+> <br>
+> <br>
+> Airflow components (Celery, ML, etc)
+>
+> Difference between ML & Data Pipelines
+>
+> Overview of Airflow + Usecase
+
+### The big picture
 
 
 [NEXT]
@@ -1415,7 +1353,7 @@ the roller-coaster keeps going!
 https://github.com/axsauze/crypto-ml
 
 ### Slides
-http://github.com/axsauze/industrial-machine-learning
+http://github.com/axsauze/industrial-airflow
 
 [NEXT]
 <!-- .slide: data-background="images/network-background.jpg" class="background" -->
@@ -1434,14 +1372,9 @@ http://github.com/axsauze/industrial-machine-learning
     <td style="float: left; color: white; font-size: 0.7em;">
 
         <br>
-        Head of Deployed Engineering
+        Chief Scientist
         <br>
-        <a style="color: cyan" href="http://eigentech.com">Eigen Technologies</a>
-        <br>
-        <br>
-        Chairman
-        <br>
-        <a style="color: cyan" href="http://ethical.institute">The Institute for Ethical AI & ML</a>
+        <a style="color: cyan" href="http://e-x.io">The Institute for Ethical AI & ML</a>
         <br>
         <br>
         Fellow (AI, Data & ML)
